@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đề Luyện Tập Số 12 – Chuyên Anh Phú Thọ 2026-2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#0d2340;--bm:#163760;--bl:#1e5080;--gd:#a07808;--g:#c9940e;--gl:#f2dfa0;--cr:#f7f4ee;--cw:#eeeae0;--pp:#faf8f2;--ink:#18202c;--brd:#c4b890;--ok:#145a2e;--ok-bg:#d0ead8;--ok-bd:#1e8040;--no:#7a1515;--no-bg:#f5d0d0;--no-bd:#c82020;--hi:#fdf6e0;--hi-bd:#c9940e;--listen:#3a6a5a;--listen-bg:#e4f0ea;--listen-bd:#2a7a5a}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--cr);font-family:'Lora',Georgia,serif;color:var(--ink);line-height:1.72;font-size:15px}body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(12,35,64,.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(12,35,64,.015) 40px)}.wrap{max-width:920px;margin:0 auto;padding:28px 20px 64px;position:relative;z-index:1}
+
+
+/* ── TIMER BAR ── */
+.timer-wrap{position:sticky;top:0;z-index:300;background:linear-gradient(90deg,#1a3a5c,#2a5a8c);border-bottom:3px solid #d4a017;padding:7px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 12px rgba(0,0,0,.35);}
+.timer-label{font-family:'Playfair Display',serif;font-weight:700;color:#f5e6b0;font-size:.8rem;white-space:nowrap}
+.timer-display{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;color:#d4a017;min-width:68px;text-align:center;transition:color .5s}
+.timer-display.twarn{color:#ffc107;animation:tblink .8s infinite}
+.timer-display.tdanger{color:#ff4444;animation:tblink .35s infinite}
+.timer-display.paused{color:#aaa!important;animation:none!important}
+.timer-toggle-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:20px;color:var(--gl);font-size:.85rem;padding:3px 12px;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.timer-toggle-btn:hover{background:rgba(255,255,255,.28)}
+.timer-toggle-btn.paused{background:rgba(201,148,14,.25);border-color:var(--g);color:var(--g)}
+@keyframes tblink{0%,100%{opacity:1}50%{opacity:.45}}
+.timer-track{flex:1;background:rgba(255,255,255,.15);border-radius:20px;height:8px;overflow:hidden}
+.timer-fill{height:100%;background:linear-gradient(90deg,#28a745,#d4a017,#dc3545);border-radius:20px;transition:width 1s linear}
+.attempt-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:2px 10px;font-size:.72rem;color:#f5e6b0;white-space:nowrap}
+.attempt-badge strong{color:#d4a017;font-family:'Playfair Display',serif;font-size:.9rem}
+/* ── CHEAT OVERLAY (removed – silent logging only) ── */
+/* ── TIME-UP OVERLAY ── */
+.timeup-overlay{display:none;position:fixed;inset:0;z-index:8000;background:rgba(26,58,92,.95);align-items:center;justify-content:center}
+.timeup-overlay.show{display:flex}
+.timeup-box{background:#fff;border-radius:8px;padding:28px 36px;max-width:360px;text-align:center;border:4px solid #d4a017}
+.timeup-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#1a3a5c;margin-bottom:8px}
+.timeup-msg{font-size:.88rem;color:#444;line-height:1.6;margin-bottom:14px}
+.btn-timeup{background:#d4a017;color:#1a3a5c;border:none;padding:10px 26px;border-radius:5px;font-size:.9rem;font-weight:700;cursor:pointer}
+/* ── PDF header ── */
+.pdf-info{display:none;background:#fffbe6;border:2px solid #ffc107;border-radius:4px;padding:11px 16px;margin-bottom:12px;font-size:.81rem;color:#5a4a10;line-height:1.65}
+.pdf-info strong{display:block;font-family:'Playfair Display',serif;font-size:.9rem;color:#8b1a1a;margin-bottom:3px}
+@media print{.timer-wrap,.timeup-overlay,.prog-bar,.pg-btns,.sc-actions,.btn-grade,.btn-reset{display:none!important}.pdf-info{display:block!important}}
+
+/* PROGRESS BAR */
+.prog-bar{position:sticky;top:0;z-index:100;background:linear-gradient(90deg,var(--bd),var(--bm));border-bottom:3px solid var(--g);padding:7px 20px;display:flex;align-items:center;gap:14px;font-size:.78rem;color:var(--gl);box-shadow:0 2px 12px rgba(0,0,0,.35)}.prog-bar .pg-label{font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap}.prog-track{flex:1;background:rgba(255,255,255,.15);border-radius:20px;height:8px;overflow:hidden}.prog-fill{height:100%;background:linear-gradient(90deg,var(--g),#ffe066);border-radius:20px;transition:width .4s ease;width:0%}.prog-count{white-space:nowrap;font-weight:700;color:var(--g)}.pg-btns{display:flex;gap:8px}.pg-btn{border:none;cursor:pointer;padding:5px 14px;border-radius:3px;font-size:.75rem;font-weight:700;transition:all .15s}.pg-btn.grade{background:var(--g);color:var(--bd)}.pg-btn.grade:hover{background:var(--gl)}.pg-btn.reset{background:transparent;color:var(--gl);border:1px solid rgba(255,255,255,.35)}.pg-btn.reset:hover{background:rgba(255,255,255,.12)}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,var(--bd) 0%,var(--bm) 55%,#3a7abf 100%);border-radius:4px 4px 0 0;padding:26px 28px 20px;color:var(--gl);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;border-bottom:4px solid var(--g)}.hdr-l{font-size:.83rem;line-height:1.5}.hdr-l strong{font-family:'Playfair Display',serif;font-size:.97rem;display:block}.hdr-c{text-align:center}.badge{background:var(--g);color:var(--bd);font-family:'Playfair Display',serif;font-size:.97rem;font-weight:900;padding:8px 18px;border-radius:3px;border:2px solid var(--gl);white-space:nowrap;letter-spacing:.4px}.hdr-r{text-align:right;font-size:.83rem;line-height:1.5}.hdr-r strong{font-family:'Playfair Display',serif;font-size:.92rem;display:block}@media(max-width:600px){.hdr{grid-template-columns:1fr;text-align:center}.hdr-r{text-align:center}}
+.sub-hdr{background:var(--cw);border:1px solid var(--brd);border-top:none;padding:8px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:.79rem;color:var(--bm);border-radius:0 0 4px 4px;margin-bottom:20px}.sub-hdr strong{color:var(--bd)}
+
+/* SCORE PANEL */
+.score-panel{background:linear-gradient(135deg,var(--bd),var(--bm));color:var(--gl);border-radius:4px;border:2px solid var(--g);padding:18px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 4px 20px rgba(26,58,92,.28)}.score-panel h2{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:2px}.score-panel small{opacity:.72;font-size:.73rem}.sc-nums{display:flex;gap:16px;align-items:center}.sc-box{text-align:center}.sc-box span{display:block;font-size:1.9rem;font-weight:700;color:var(--g);font-family:'Playfair Display',serif;line-height:1.1}.sc-box small{font-size:.68rem;opacity:.78}.sc-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.btn-grade{background:var(--g);color:var(--bd);border:none;cursor:pointer;padding:10px 24px;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;border-radius:3px;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.25)}.btn-grade:hover{background:var(--gl);transform:translateY(-1px)}.btn-reset{background:transparent;color:var(--gl);border:1px solid rgba(255,255,255,.4);cursor:pointer;padding:8px 18px;font-size:.82rem;border-radius:3px;transition:all .2s}.btn-reset:hover{background:rgba(255,255,255,.1)}
+
+/* SECTION */
+.sec{background:var(--pp);border:1px solid var(--brd);border-radius:4px;margin-bottom:20px;overflow:hidden}.sec-ttl{background:linear-gradient(90deg,var(--bm),var(--bl));color:var(--gl);padding:9px 18px;font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;letter-spacing:.3px;display:flex;align-items:center;gap:9px}.sec-n{background:var(--g);color:var(--bd);width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;flex-shrink:0}.sec-inst{font-style:italic;font-size:.8rem;padding:7px 18px;color:var(--bm);border-bottom:1px dashed var(--brd)}
+
+/* LISTENING SECTION – tham khảo, không tính điểm */
+.sec.listen-sec{border:2px dashed var(--listen-bd);}.sec.listen-sec .sec-ttl{background:linear-gradient(90deg,var(--listen),#3aaa8a)}.listen-notice{background:var(--listen-bg);border-left:4px solid var(--listen-bd);color:var(--listen);font-size:.8rem;font-style:italic;padding:8px 18px;display:flex;align-items:center;gap:8px}.listen-q{padding:11px 18px;border-bottom:1px solid rgba(0,120,80,.1)}.listen-q:last-child{border-bottom:none}.listen-q-stem{font-size:.875rem;margin-bottom:6px;font-weight:600;color:var(--listen)}.listen-ans{background:var(--listen-bg);border:1px solid var(--listen-bd);border-radius:3px;padding:7px 14px;font-size:.87rem;color:var(--listen);margin-top:4px}.listen-ans strong{font-family:'Playfair Display',serif}.listen-opts{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:3px}.listen-opts li{font-size:.855rem;padding:4px 10px;border-radius:3px;background:var(--cw);border:1px solid var(--brd)}.listen-opts li.correct-opt{background:var(--listen-bg);border-color:var(--listen-bd);color:var(--listen);font-weight:600}.listen-opts li.correct-opt::before{content:'✓ ';font-weight:700}.listen-map{padding:10px 18px}.listen-map table{border-collapse:collapse;font-size:.855rem;width:100%}.listen-map td,.listen-map th{padding:5px 12px;border:1px solid var(--brd);text-align:center}.listen-map th{background:var(--cw);font-weight:700;color:var(--bm)}.listen-map td.ans-cell{background:var(--listen-bg);color:var(--listen);font-weight:700}.gap-fill-row{padding:8px 18px;display:flex;align-items:baseline;gap:8px;border-bottom:1px solid rgba(0,120,80,.08);font-size:.87rem}.gap-fill-row:last-child{border-bottom:none}.gap-num{font-weight:700;color:var(--listen);min-width:28px}.gap-sentence{flex:1;line-height:1.65}.gap-answer{background:var(--listen-bg);border:1px solid var(--listen-bd);border-radius:3px;padding:2px 10px;font-weight:700;color:var(--listen);font-family:'Playfair Display',serif;white-space:nowrap}
+
+/* QUESTIONS */
+.q{padding:11px 18px;border-bottom:1px solid rgba(160,192,224,.22);transition:background .2s}.q:last-child{border-bottom:none}.q-stem{font-size:.875rem;margin-bottom:7px;line-height:1.65}.q-stem .qn{font-family:'Playfair Display',serif;font-weight:700;color:var(--bm);margin-right:3px}.q-stem .gap-ctx{display:block;margin-top:4px;font-size:.78rem;font-style:italic;color:var(--bm);background:var(--cw);border-left:3px solid var(--g);padding:4px 10px;border-radius:0 3px 3px 0}.q-stem .gap-ctx strong{color:var(--bd);font-style:normal}.opts{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px}.opts.single-col{grid-template-columns:1fr}@media(max-width:540px){.opts{grid-template-columns:1fr}}.opt label{display:flex;align-items:flex-start;gap:7px;cursor:pointer;padding:5px 8px;border-radius:3px;border:1px solid transparent;transition:background .13s,border-color .13s;font-size:.855rem;line-height:1.5}.opt label:hover{background:var(--gl);border-color:var(--g)}.opt input[type=radio]{accent-color:var(--bm);margin-top:3px;flex-shrink:0}.opt-l{font-weight:700;color:var(--bm);min-width:16px;flex-shrink:0}.opt.ok label{background:var(--ok-bg)!important;border-color:var(--ok-bd)!important;color:var(--ok);font-weight:600}.opt.no label{background:var(--no-bg)!important;border-color:var(--no-bd)!important;color:var(--no);font-weight:600}.opt.ans label{background:var(--hi)!important;border-color:var(--hi-bd)!important;font-weight:600}.fb{display:none;margin-top:5px;font-size:.78rem;padding:4px 10px;border-radius:3px;line-height:1.4}.fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border-left:3px solid var(--ok-bd)}.fb.no{display:block;background:var(--no-bg);color:var(--no);border-left:3px solid var(--no-bd)}
+
+/* PASSAGE / CLOZE TEXT */
+.passage{background:var(--cw);border:1px solid var(--brd);border-left:4px solid var(--g);border-radius:0 3px 3px 0;padding:14px 18px;margin:10px 18px;font-size:.87rem;line-height:1.78}.passage p{margin-bottom:10px}.passage p:last-child{margin-bottom:0}.ptitle{font-family:'Playfair Display',serif;font-weight:700;text-align:center;margin-bottom:10px;color:var(--bd);font-size:.97rem}.bracket{color:var(--bm);font-weight:700}.ctext{background:var(--cw);border:1px solid var(--brd);border-left:4px solid var(--gd);padding:13px 18px;margin:10px 18px;font-size:.87rem;line-height:1.8}.ctext p{margin-bottom:10px}.ctext p:last-child{margin-bottom:0}
+
+/* OPEN CLOZE SECTION */
+.opencloze-text{background:var(--cw);border:1px solid var(--brd);border-left:4px solid var(--gd);padding:14px 18px;margin:10px 18px;font-size:.87rem;line-height:2.0}.blank-input-wrap{display:inline-block;position:relative;margin:0 2px}.blank-input{border:none;border-bottom:2px solid var(--bm);background:transparent;font-family:'Lora',Georgia,serif;font-size:.87rem;color:var(--ink);width:90px;text-align:center;outline:none;padding:0 2px;transition:border-color .15s}.blank-input:focus{border-color:var(--g)}.blank-input.checked-ok{border-color:var(--ok-bd);color:var(--ok);font-weight:700}.blank-input.checked-no{border-color:var(--no-bd);color:var(--no)}.blank-num{font-size:.67rem;font-weight:700;color:var(--bm);position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap}.oc-fb-row{display:flex;flex-wrap:wrap;gap:6px;padding:8px 18px;font-size:.8rem}.oc-fb-item{padding:3px 9px;border-radius:3px;border:1px solid var(--brd);background:var(--cw)}.oc-fb-item.ok-item{background:var(--ok-bg);border-color:var(--ok-bd);color:var(--ok)}.oc-fb-item.no-item{background:var(--no-bg);border-color:var(--no-bd);color:var(--no)}
+
+/* ERROR CORRECTION */
+.error-text{background:var(--cw);border:1px solid var(--brd);border-left:4px solid #8b4513;padding:0;margin:10px 18px;font-size:.87rem;line-height:1.85;border-radius:0 3px 3px 0}.err-line{display:flex;gap:0;border-bottom:1px solid rgba(160,192,224,.18)}.err-line:last-child{border-bottom:none}.err-ln{background:rgba(42,90,140,.07);color:var(--bm);font-size:.72rem;font-weight:700;padding:5px 8px;min-width:32px;text-align:center;flex-shrink:0;font-family:'Playfair Display',serif}.err-content{padding:5px 12px;flex:1}
+.err-q{padding:8px 18px;border-bottom:1px solid rgba(160,192,224,.22)}.err-q:last-child{border-bottom:none}.err-q-stem{font-size:.87rem;margin-bottom:5px;color:var(--bm)}.err-input-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.err-label{font-size:.78rem;font-weight:700;color:var(--bm);white-space:nowrap}.err-line-n{font-weight:700;color:var(--bd)}.err-from{border:1px solid var(--brd);border-radius:3px;padding:3px 8px;font-size:.87rem;font-family:'Lora',Georgia,serif;width:120px;background:var(--pp)}.err-arrow{color:var(--bm);font-weight:700}.err-to{border:1px solid var(--bm);border-radius:3px;padding:3px 8px;font-size:.87rem;font-family:'Lora',Georgia,serif;width:120px;background:var(--pp)}.err-to:focus{outline:none;border-color:var(--g)}.err-to.ok{border-color:var(--ok-bd);background:var(--ok-bg);color:var(--ok)}.err-to.no{border-color:var(--no-bd);background:var(--no-bg);color:var(--no)}.err-fb{font-size:.78rem;padding:4px 10px;border-radius:3px;display:none}.err-fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border-left:3px solid var(--ok-bd)}.err-fb.no{display:block;background:var(--no-bg);color:var(--no);border-left:3px solid var(--no-bd)}
+
+/* SENTENCE TRANSFORMATION */
+.trans-q{padding:10px 18px;border-bottom:1px solid rgba(160,192,224,.22)}.trans-q:last-child{border-bottom:none}.trans-original{font-size:.875rem;margin-bottom:6px;line-height:1.65}.trans-original .qn{font-family:'Playfair Display',serif;font-weight:700;color:var(--bm);margin-right:3px}.trans-start{font-size:.87rem;margin-top:4px;font-style:italic}.trans-start strong{color:var(--bd);font-style:normal}.trans-input-row{display:flex;align-items:baseline;gap:6px;margin-top:5px;flex-wrap:wrap}.trans-prefix{font-size:.87rem;font-style:italic;font-weight:600;color:var(--bm);flex-shrink:0}.trans-field{border:none;border-bottom:2px solid var(--bm);background:transparent;font-family:'Lora',Georgia,serif;font-size:.87rem;color:var(--ink);flex:1;min-width:180px;outline:none;padding:0 4px;transition:border-color .15s}.trans-field:focus{border-color:var(--g)}.trans-field.ok{border-color:var(--ok-bd);color:var(--ok)}.trans-field.no{border-color:var(--no-bd);color:var(--no)}.trans-suffix{font-size:.87rem;font-style:italic;color:var(--bm);flex-shrink:0}.trans-fb{font-size:.78rem;padding:3px 10px;border-radius:3px;margin-top:4px;display:none}.trans-fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border-left:3px solid var(--ok-bd)}.trans-fb.no{display:block;background:var(--no-bg);color:var(--no);border-left:3px solid var(--no-bd)}
+.kw-badge{background:var(--bd);color:var(--gl);font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:10px;font-family:'Playfair Display',serif;margin-left:6px}
+
+/* WRITING SECTION – gợi ý, không tính điểm */
+.writing-sec{padding:14px 18px}.writing-topic{font-size:.9rem;line-height:1.72;margin-bottom:12px;background:linear-gradient(135deg,#fef9ed,#fdf0d0);border:2px solid var(--g);border-radius:4px;padding:14px 18px}.writing-topic strong{color:var(--bd)}.writing-notice{font-size:.78rem;color:var(--listen);font-style:italic;background:var(--listen-bg);border-left:3px solid var(--listen-bd);padding:6px 12px;border-radius:0 3px 3px 0;margin-bottom:10px}.writing-hints{font-size:.83rem;margin-bottom:12px}.writing-hints summary{cursor:pointer;color:var(--bm);font-weight:600;padding:5px 0}.writing-hints-body{background:var(--cw);border:1px solid var(--brd);border-radius:3px;padding:10px 14px;margin-top:6px;line-height:1.72}.writing-hints-body p{margin-bottom:6px}.writing-hints-body p:last-child{margin-bottom:0}.writing-hints-body ul{padding-left:18px;margin-top:4px}.writing-hints-body li{margin-bottom:3px}#essay{width:100%;min-height:180px;border:1px solid var(--brd);border-radius:3px;padding:11px;font-family:'Lora',Georgia,serif;font-size:.87rem;line-height:1.7;background:var(--pp);color:var(--ink);resize:vertical}.wc{font-size:.75rem;color:var(--bm);margin-top:5px;text-align:right}.crit-note{font-size:.78rem;color:var(--bm);font-style:italic;text-align:center;margin-top:8px}
+
+/* ANSWER KEY */
+.ak-toggle{background:none;border:1px solid var(--brd);color:var(--bm);padding:6px 15px;cursor:pointer;font-size:.78rem;border-radius:3px;margin:6px 18px}
+.ak-locked{display:flex;align-items:center;gap:10px;padding:14px 20px;font-size:.88rem;color:var(--bm);font-style:italic}
+.ak-lock-icon{font-size:1.4rem;flex-shrink:0}
+.ak-lock-msg{line-height:1.5}
+.ak-lock-msg strong{color:var(--bd);font-style:normal}.ak-grid{display:none;grid-template-columns:repeat(10,1fr);gap:3px;padding:10px 18px}.ak-grid.on{display:grid}.ak-cell{text-align:center;padding:5px 3px;background:var(--cw);border-radius:2px;border:1px solid var(--brd)}.ak-cell .an{font-size:.65rem;color:var(--bm);display:block}.ak-cell .aa{font-weight:700;color:var(--bd);font-family:'Playfair Display',serif;font-size:.9rem}
+.sum-table{display:none;margin:14px 18px;border-collapse:collapse;width:calc(100% - 36px);font-size:.82rem}.sum-table.on{display:table}.sum-table th{background:var(--bm);color:var(--gl);padding:6px 10px;font-weight:600;text-align:left}.sum-table td{padding:5px 10px;border-bottom:1px solid rgba(160,192,224,.25)}.sum-table tr:nth-child(even) td{background:var(--cw)}
+footer{text-align:center;font-size:.72rem;color:var(--bl);padding:14px 0;border-top:1px solid var(--brd);margin-top:6px;font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- STICKY PROGRESS BAR -->
+
+<!-- Cheat detection: silent logging only (no popup) -->
+<!-- TIMEUP OVERLAY -->
+<div class="timeup-overlay" id="timeupOverlay">
+  <div class="timeup-box">
+    <div style="font-size:48px;margin-bottom:8px">⏰</div>
+    <div class="timeup-title">Hết giờ!</div>
+    <div class="timeup-msg">Thời gian làm bài đã kết thúc. Hệ thống sẽ chấm điểm phần bạn đã hoàn thành.</div>
+    <button class="btn-timeup" onclick="handleTimeUp()">✅ Xem kết quả ngay</button>
+  </div>
+</div>
+<!-- TIMER BAR -->
+<div class="timer-wrap" id="timerWrap">
+  <span class="timer-label">⏱ Thời gian còn lại</span>
+  <span class="timer-display" id="timerDisplay">90:00</span>
+  <div class="timer-track"><div class="timer-fill" id="timerFill" style="width:100%"></div></div>
+  <button class="timer-toggle-btn" id="timerToggleBtn" onclick="toggleTimer()" title="Bật/Tắt đồng hồ">⏸</button>
+  <span class="attempt-badge">Lần thứ <strong id="attemptNum">1</strong></span>
+</div>
+
+<div class="prog-bar">
+  <span class="pg-label">📝 Tiến độ làm bài</span>
+  <div class="prog-track"><div class="prog-fill" id="pf"></div></div>
+  <span class="prog-count" id="pc">0 / 70</span>
+  <div class="pg-btns">
+    <button class="pg-btn grade" onclick="gradeAll()">✅ Chấm điểm</button>
+    <button class="pg-btn reset" onclick="resetAll()">↺ Làm lại</button>
+    <button class="pg-btn grade" onclick="exportPDF()" style="background:#2e8b6a;color:#fff">📄 Xuất PDF</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+
+<!-- Hidden counters for cheat logging (no UI shown) -->
+<span id="cheatCount" style="display:none">0</span>
+<span id="cheatTimes" style="display:none">0</span>
+<!-- PDF INFO (hiện khi in) -->
+<div class="pdf-info" id="pdfInfo"><strong>📋 THÔNG TIN BÀI LÀM</strong><span id="pdfInfoContent"></span></div>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-l"><strong>UBND TỈNH PHÚ THỌ</strong>SỞ GIÁO DỤC VÀ ĐÀO TẠO</div>
+  <div class="hdr-c"><div class="badge">Đề Luyện Tập Số 12</div></div>
+  <div class="hdr-r"><strong>KỲ THI TUYỂN SINH VÀO LỚP 10 THPT<br>NĂM HỌC 2026-2027 – MÔN TIẾNG ANH</strong>Dành cho thí sinh thi vào lớp chuyên Tiếng Anh &amp; Ngoại ngữ</div>
+</div>
+<div class="sub-hdr">
+  <span>🎧 <strong>LISTENING:</strong> Tham khảo (không tính điểm)</span>
+  <span>📋 <strong>LEXICO-GRAMMAR + READING + WRITING P1:</strong> 70 câu có chấm điểm</span>
+  <span>✍️ <strong>WRITING P2:</strong> Gợi ý (không tính điểm)</span>
+</div>
+
+<!-- SCORE PANEL -->
+<div class="score-panel" id="scorepanel">
+  <div><h2>📊 Bảng Điểm Tự Chấm</h2><small>Điểm tính trên phần II, III &amp; Writing Part 1 (70 câu/ô trống)</small></div>
+  <div class="sc-nums">
+    <div class="sc-box"><span id="s-ok">–</span><small>Đúng</small></div>
+    <div class="sc-box"><span id="s-no">–</span><small>Sai</small></div>
+    <div class="sc-box"><span id="s-bl">–</span><small>Bỏ</small></div>
+    <div class="sc-box"><span id="s-pt">–</span><small>Điểm %</small></div>
+  </div>
+  <div class="sc-actions">
+    <button class="btn-grade" onclick="gradeAll()">✅ Chấm Điểm</button>
+    <button class="btn-reset" onclick="resetAll()">↺ Làm Lại</button>
+    <button class="btn-grade" onclick="exportPDF()" style="background:#2e8b6a">📄 Xuất PDF</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- I. LISTENING – THAM KHẢO, KHÔNG TÍNH ĐIỂM -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec listen-sec">
+  <div class="sec-ttl">🎧 I. LISTENING &nbsp;<span style="font-size:.75rem;font-weight:400;opacity:.85">(Tham khảo – Không tính điểm)</span></div>
+  <div class="listen-notice">ℹ️ Phần Listening được trình bày để tham khảo. Đáp án được hiển thị sẵn để học sinh đối chiếu sau khi nghe. Không tính điểm trong bài kiểm tra này.</div>
+
+  <!-- PART 1 -->
+  <div style="padding:10px 18px 4px;font-size:.83rem;font-weight:700;color:var(--listen)">Part 1 – Questions 1–8 &nbsp;<span style="font-weight:400;font-style:italic;color:var(--bm)">(IELTS Cambridge 11 – Test 2 – Part 2)</span></div>
+
+  <div class="listen-q">
+    <div class="listen-q-stem">Questions 1–2: Which TWO facilities does the theatre currently offer to the public?</div>
+    <ul class="listen-opts">
+      <li>A. rooms for hire</li>
+      <li class="correct-opt">B. backstage tours</li>
+      <li>C. hire of costumes</li>
+      <li class="correct-opt">D. a bookshop</li>
+      <li>E. a café</li>
+    </ul>
+    <div class="listen-ans">📌 Đáp án: <strong>B &amp; D</strong> – backstage tours / a bookshop</div>
+  </div>
+
+  <div class="listen-q">
+    <div class="listen-q-stem">Questions 3–4: Which TWO workshops does the theatre currently offer?</div>
+    <ul class="listen-opts">
+      <li>A. sound</li>
+      <li>B. acting</li>
+      <li class="correct-opt">C. making puppets</li>
+      <li>D. make-up</li>
+      <li class="correct-opt">E. lighting</li>
+    </ul>
+    <div class="listen-ans">📌 Đáp án: <strong>C &amp; E</strong> – making puppets / lighting</div>
+  </div>
+
+  <div class="listen-q">
+    <div class="listen-q-stem">Questions 5–8: Ground Floor Plan of Theatre – Write the correct letter, A–G.</div>
+    <div class="listen-map">
+      <table>
+        <thead><tr><th>Câu</th><th>Vị trí</th><th>Đáp án</th></tr></thead>
+        <tbody>
+          <tr><td>5</td><td>box office</td><td class="ans-cell">G</td></tr>
+          <tr><td>6</td><td>theatre manager's office</td><td class="ans-cell">D</td></tr>
+          <tr><td>7</td><td>lighting box</td><td class="ans-cell">B</td></tr>
+          <tr><td>8</td><td>artistic director's office</td><td class="ans-cell">F</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div style="padding:10px 18px 4px;font-size:.83rem;font-weight:700;color:var(--listen);border-top:1px dashed var(--listen-bd)">Part 2 – Questions 9–14: Multiple Choice &nbsp;<span style="font-weight:400;font-style:italic;color:var(--bm)">(C1 Advanced CAE – Listening Test 42)</span></div>
+  <div class="listen-q">
+    <div class="listen-q-stem">9. Jack thinks the main reason people are attracted to beaches is because ___</div>
+    <ul class="listen-opts">
+      <li class="correct-opt">A. we enjoy a feeling of timelessness there.</li>
+      <li>B. we find breathing the fresh salty air invigorating.</li>
+      <li>C. the sound of the waves is hypnotic.</li>
+      <li>D. the quality of the light is special.</li>
+    </ul>
+  </div>
+  <div class="listen-q">
+    <div class="listen-q-stem">10. What was Trisha's reaction when she read an article about 'pop-up' beaches?</div>
+    <ul class="listen-opts">
+      <li>A. She was surprised the topic hadn't been explored before.</li>
+      <li>B. She wanted to research the phenomenon more.</li>
+      <li class="correct-opt">C. She was ashamed at having visited one.</li>
+      <li>D. She questioned the advice in the article.</li>
+    </ul>
+  </div>
+  <div class="listen-q">
+    <div class="listen-q-stem">11. Jack and Trisha agree that the practice of adding fresh sand to beaches ___</div>
+    <ul class="listen-opts">
+      <li>A. is less effective against coastal erosion than building a seawall.</li>
+      <li>B. can only be a short-term solution to coastal erosion.</li>
+      <li>C. interferes with the normal movement of the sea.</li>
+      <li class="correct-opt">D. must be harmful to the wildlife there.</li>
+    </ul>
+  </div>
+  <div class="listen-q">
+    <div class="listen-q-stem">12. Why does Jack mention the fact that more people live in cities nowadays?</div>
+    <ul class="listen-opts">
+      <li>A. to criticise people's lack of awareness of environmental issues</li>
+      <li>B. to illustrate that natural resources are becoming scarce</li>
+      <li>C. to suggest society's major concern is making money</li>
+      <li class="correct-opt">D. to explain why the demand for sand is so high</li>
+    </ul>
+  </div>
+  <div class="listen-q">
+    <div class="listen-q-stem">13. Trisha is particularly concerned that removing sand from beaches may result in ___</div>
+    <ul class="listen-opts">
+      <li class="correct-opt">A. a change in the lifestyles of coastal communities.</li>
+      <li>B. the creation of new micro climates.</li>
+      <li>C. fewer visitors going to those areas.</li>
+      <li>D. the need for considerable financial investment.</li>
+    </ul>
+  </div>
+  <div class="listen-q">
+    <div class="listen-q-stem">14. What does Jack hope will solve the problem of taking sand from beaches?</div>
+    <ul class="listen-opts">
+      <li class="correct-opt">A. Scientists will develop a new form of sand.</li>
+      <li>B. Architects will rethink the design of buildings.</li>
+      <li>C. Governments will impose stricter regulations.</li>
+      <li>D. The public will become better informed.</li>
+    </ul>
+  </div>
+
+  <!-- PART 3 -->
+  <div style="padding:10px 18px 4px;font-size:.83rem;font-weight:700;color:var(--listen);border-top:1px dashed var(--listen-bd)">Part 3 – Questions 15–20: Sentence Completion (Termite robots)</div>
+  <div class="gap-fill-row"><span class="gap-num">15.</span><span class="gap-sentence">Jim says termites differ from bees in that a <span class="gap-answer">queen</span> is not responsible for organising their building work.</span></div>
+  <div class="gap-fill-row"><span class="gap-num">16.</span><span class="gap-sentence">Jim uses the word <span class="gap-answer">colony</span> to refer to the robot group he's created to function as independent units.</span></div>
+  <div class="gap-fill-row"><span class="gap-num">17.</span><span class="gap-sentence">Jim observed termites depositing partially consumed <span class="gap-answer">wood</span> in shared habitats, which activated a response from other termites.</span></div>
+  <div class="gap-fill-row"><span class="gap-num">18.</span><span class="gap-sentence">Jim got a single robot to finish the construction of a <span class="gap-answer">staircase</span> when publicly demonstrating how simple structure building is performed.</span></div>
+  <div class="gap-fill-row"><span class="gap-num">19.</span><span class="gap-sentence">Jim predicts that his robots will soon be able to move <span class="gap-answer">sandbags</span> into position to help people cope with the threat of floods.</span></div>
+  <div class="gap-fill-row"><span class="gap-num">20.</span><span class="gap-sentence">A group of Turkish researchers has observed Jim's work in the hope of coming up with a <span class="gap-answer">mathematical model</span> they can learn from.</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- II. LEXICO-GRAMMAR                          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">1</span>II. LEXICO-GRAMMAR – Part 1: Multiple Choice (Câu 21–35)</div>
+  <p class="sec-inst">Chọn phương án đúng nhất (A, B, C, hoặc D) cho mỗi câu.</p>
+
+  <div class="q" id="q21"><div class="q-stem"><span class="qn">21.</span> The company ______ the safety issue earlier. The product recall damaged its reputation.</div><div class="opts"><div class="opt"><label><input type="radio" name="q21" value="A"><span class="opt-l">A.</span>would have noticed</label></div><div class="opt"><label><input type="radio" name="q21" value="B"><span class="opt-l">B.</span>must have been noticing</label></div><div class="opt"><label><input type="radio" name="q21" value="C"><span class="opt-l">C.</span>can have been noticing</label></div><div class="opt"><label><input type="radio" name="q21" value="D"><span class="opt-l">D.</span>should have noticed</label></div></div><div class="fb" id="fb21"></div></div>
+
+  <div class="q" id="q22"><div class="q-stem"><span class="qn">22.</span> Employees were encouraged to work from home temporarily, ______ the severe traffic disruptions downtown.</div><div class="opts"><div class="opt"><label><input type="radio" name="q22" value="A"><span class="opt-l">A.</span>in view of</label></div><div class="opt"><label><input type="radio" name="q22" value="B"><span class="opt-l">B.</span>with a view to</label></div><div class="opt"><label><input type="radio" name="q22" value="C"><span class="opt-l">C.</span>regardless of</label></div><div class="opt"><label><input type="radio" name="q22" value="D"><span class="opt-l">D.</span>for fear that</label></div></div><div class="fb" id="fb22"></div></div>
+
+  <div class="q" id="q23"><div class="q-stem"><span class="qn">23.</span> The old report was riddled ______ errors, so the manager asked the team to revise it completely.</div><div class="opts"><div class="opt"><label><input type="radio" name="q23" value="A"><span class="opt-l">A.</span>with</label></div><div class="opt"><label><input type="radio" name="q23" value="B"><span class="opt-l">B.</span>of</label></div><div class="opt"><label><input type="radio" name="q23" value="C"><span class="opt-l">C.</span>in</label></div><div class="opt"><label><input type="radio" name="q23" value="D"><span class="opt-l">D.</span>on</label></div></div><div class="fb" id="fb23"></div></div>
+
+  <div class="q" id="q24"><div class="q-stem"><span class="qn">24.</span> "I can't believe the project failed." – "It might have succeeded ______ better communication."</div><div class="opts"><div class="opt"><label><input type="radio" name="q24" value="A"><span class="opt-l">A.</span>if the team communicated</label></div><div class="opt"><label><input type="radio" name="q24" value="B"><span class="opt-l">B.</span>had the team communicated</label></div><div class="opt"><label><input type="radio" name="q24" value="C"><span class="opt-l">C.</span>did the team communicate</label></div><div class="opt"><label><input type="radio" name="q24" value="D"><span class="opt-l">D.</span>if the team would communicate</label></div></div><div class="fb" id="fb24"></div></div>
+
+  <div class="q" id="q25"><div class="q-stem"><span class="qn">25.</span> "If the flight has been canceled because of the storm, then ______. We'll leave tomorrow instead."</div><div class="opts"><div class="opt"><label><input type="radio" name="q25" value="A"><span class="opt-l">A.</span>so is it</label></div><div class="opt"><label><input type="radio" name="q25" value="B"><span class="opt-l">B.</span>so be it</label></div><div class="opt"><label><input type="radio" name="q25" value="C"><span class="opt-l">C.</span>so it is</label></div><div class="opt"><label><input type="radio" name="q25" value="D"><span class="opt-l">D.</span>so it be</label></div></div><div class="fb" id="fb25"></div></div>
+
+  <div class="q" id="q26"><div class="q-stem"><span class="qn">26.</span> ______, the research team began testing the new vaccine on volunteers.</div><div class="opts"><div class="opt"><label><input type="radio" name="q26" value="A"><span class="opt-l">A.</span>They completed all the safety checks</label></div><div class="opt"><label><input type="radio" name="q26" value="B"><span class="opt-l">B.</span>After completing all checks safely</label></div><div class="opt"><label><input type="radio" name="q26" value="C"><span class="opt-l">C.</span>All safety checks completed</label></div><div class="opt"><label><input type="radio" name="q26" value="D"><span class="opt-l">D.</span>They were completed safety checks</label></div></div><div class="fb" id="fb26"></div></div>
+
+  <div class="q" id="q27"><div class="q-stem"><span class="qn">27.</span> The new stadium has a seating capacity ______, yet it attracts far fewer spectators each season.</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q27" value="A"><span class="opt-l">A.</span>comparable to the size of the national arena, but only half the attendance</label></div><div class="opt"><label><input type="radio" name="q27" value="B"><span class="opt-l">B.</span>about the same as the national arena but an attendance of only half</label></div><div class="opt"><label><input type="radio" name="q27" value="C"><span class="opt-l">C.</span>of about the same size as the national arena is, but only half the attendance</label></div><div class="opt"><label><input type="radio" name="q27" value="D"><span class="opt-l">D.</span>comparable to that of the national arena but an attendance of only half that of the national arena</label></div></div><div class="fb" id="fb27"></div></div>
+
+  <div class="q" id="q28"><div class="q-stem"><span class="qn">28.</span> They stayed in a ______ cabin near the lake during the winter holiday.</div><div class="opts"><div class="opt"><label><input type="radio" name="q28" value="A"><span class="opt-l">A.</span>cozy wooden old Canadian</label></div><div class="opt"><label><input type="radio" name="q28" value="B"><span class="opt-l">B.</span>cozy old Canadian wooden</label></div><div class="opt"><label><input type="radio" name="q28" value="C"><span class="opt-l">C.</span>Canadian cozy old wooden</label></div><div class="opt"><label><input type="radio" name="q28" value="D"><span class="opt-l">D.</span>old wooden cozy Canadian</label></div></div><div class="fb" id="fb28"></div></div>
+
+  <div class="q" id="q29"><div class="q-stem"><span class="qn">29.</span> The flowers ______ a sweet smell in the morning.</div><div class="opts"><div class="opt"><label><input type="radio" name="q29" value="A"><span class="opt-l">A.</span>pick up</label></div><div class="opt"><label><input type="radio" name="q29" value="B"><span class="opt-l">B.</span>give off</label></div><div class="opt"><label><input type="radio" name="q29" value="C"><span class="opt-l">C.</span>try on</label></div><div class="opt"><label><input type="radio" name="q29" value="D"><span class="opt-l">D.</span>bring out</label></div></div><div class="fb" id="fb29"></div></div>
+
+  <div class="q" id="q30"><div class="q-stem"><span class="qn">30.</span> The full impact of this new teaching method ______, so educators should avoid drawing firm conclusions too soon.</div><div class="opts"><div class="opt"><label><input type="radio" name="q30" value="A"><span class="opt-l">A.</span>has yet to be evaluated</label></div><div class="opt"><label><input type="radio" name="q30" value="B"><span class="opt-l">B.</span>has already evaluated</label></div><div class="opt"><label><input type="radio" name="q30" value="C"><span class="opt-l">C.</span>has not evaluated yet</label></div><div class="opt"><label><input type="radio" name="q30" value="D"><span class="opt-l">D.</span>has not already evaluated</label></div></div><div class="fb" id="fb30"></div></div>
+
+  <div class="q" id="q31"><div class="q-stem"><span class="qn">31.</span> The private university's tuition fees are ______ expensive, so many talented students cannot afford to study there.</div><div class="opts"><div class="opt"><label><input type="radio" name="q31" value="A"><span class="opt-l">A.</span>effectively</label></div><div class="opt"><label><input type="radio" name="q31" value="B"><span class="opt-l">B.</span>sensitively</label></div><div class="opt"><label><input type="radio" name="q31" value="C"><span class="opt-l">C.</span>aggressively</label></div><div class="opt"><label><input type="radio" name="q31" value="D"><span class="opt-l">D.</span>prohibitively</label></div></div><div class="fb" id="fb31"></div></div>
+
+  <div class="q" id="q32"><div class="q-stem"><span class="qn">32.</span> The firefighter was injured ______ while rescuing people from the burning building.</div><div class="opts"><div class="opt"><label><input type="radio" name="q32" value="A"><span class="opt-l">A.</span>in the line of duty</label></div><div class="opt"><label><input type="radio" name="q32" value="B"><span class="opt-l">B.</span>in the flesh</label></div><div class="opt"><label><input type="radio" name="q32" value="C"><span class="opt-l">C.</span>in the pipeline</label></div><div class="opt"><label><input type="radio" name="q32" value="D"><span class="opt-l">D.</span>in the middle of nowhere</label></div></div><div class="fb" id="fb32"></div></div>
+
+  <div class="q" id="q33"><div class="q-stem"><span class="qn">33.</span> Many office workers simply ______ the clock every day and wait for the weekend.</div><div class="opts"><div class="opt"><label><input type="radio" name="q33" value="A"><span class="opt-l">A.</span>kick</label></div><div class="opt"><label><input type="radio" name="q33" value="B"><span class="opt-l">B.</span>smack</label></div><div class="opt"><label><input type="radio" name="q33" value="C"><span class="opt-l">C.</span>punch</label></div><div class="opt"><label><input type="radio" name="q33" value="D"><span class="opt-l">D.</span>strike</label></div></div><div class="fb" id="fb33"></div></div>
+
+  <div class="q" id="q34"><div class="q-stem"><span class="qn">34.</span> The handwriting was ______ nearly impossible to read.</div><div class="opts"><div class="opt"><label><input type="radio" name="q34" value="A"><span class="opt-l">A.</span>too messy as to be</label></div><div class="opt"><label><input type="radio" name="q34" value="B"><span class="opt-l">B.</span>so messy as to be</label></div><div class="opt"><label><input type="radio" name="q34" value="C"><span class="opt-l">C.</span>as messy as to be</label></div><div class="opt"><label><input type="radio" name="q34" value="D"><span class="opt-l">D.</span>so messy as for being</label></div></div><div class="fb" id="fb34"></div></div>
+
+  <div class="q" id="q35"><div class="q-stem"><span class="qn">35.</span> He lost his temper and ______ for the man who had insulted his sister.</div><div class="opts"><div class="opt"><label><input type="radio" name="q35" value="A"><span class="opt-l">A.</span>bashed</label></div><div class="opt"><label><input type="radio" name="q35" value="B"><span class="opt-l">B.</span>thumped</label></div><div class="opt"><label><input type="radio" name="q35" value="C"><span class="opt-l">C.</span>slapped</label></div><div class="opt"><label><input type="radio" name="q35" value="D"><span class="opt-l">D.</span>swung</label></div></div><div class="fb" id="fb35"></div></div>
+</div>
+
+<!-- PART 2: WORD FORM -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">2</span>II. LEXICO-GRAMMAR – Part 2: Word Formation (Câu 36–45)</div>
+  <p class="sec-inst">Cho dạng đúng của từ trong ngoặc để điền vào chỗ trống. Nhập đáp án vào ô bên dưới.</p>
+
+  <div class="ctext">
+    <p>After the final <strong>(36)</strong> [PRAISE] _______ of the project, the results were <strong>(37)</strong> [STRIKE] _______ better than we had expected. Our teacher was very <strong>(38)</strong> [APPROACH] _______, so we felt comfortable sharing our <strong>(39)</strong> [GIVE] _______ about the first plan. She listened carefully and helped us <strong>(40)</strong> [SCORE] _______ the main problem: we had spent too much time on details that were almost <strong>(41)</strong> [POINT] _______ instead of focusing on what really mattered.</p>
+    <p>In the end, the discussion turned out to be <strong>(42)</strong> [FRUIT] _______ because everyone learned how to work more effectively. We realized that arguing over every small mistake was <strong>(43)</strong> [PRODUCE] _______, especially when we still had <strong>(44)</strong> [REMAIN] _______ tasks to finish. At first, I had been almost <strong>(45)</strong> [SENSE] _______ to my teammates' stress, but the experience taught me to be more patient and aware of others.</p>
+  </div>
+
+  <div class="q" id="q36"><div class="q-stem"><span class="qn">36.</span> After the final ______ [PRAISE] of the project, ...</div><div class="trans-input-row"><input class="trans-field" id="tf36" placeholder="Nhập đáp án..." oninput="trackInput('36')"></div><div class="trans-fb" id="fb36"></div></div>
+  <div class="q" id="q37"><div class="q-stem"><span class="qn">37.</span> ... the results were ______ [STRIKE] better than we had expected.</div><div class="trans-input-row"><input class="trans-field" id="tf37" placeholder="Nhập đáp án..." oninput="trackInput('37')"></div><div class="trans-fb" id="fb37"></div></div>
+  <div class="q" id="q38"><div class="q-stem"><span class="qn">38.</span> Our teacher was very ______ [APPROACH], so we felt comfortable ...</div><div class="trans-input-row"><input class="trans-field" id="tf38" placeholder="Nhập đáp án..." oninput="trackInput('38')"></div><div class="trans-fb" id="fb38"></div></div>
+  <div class="q" id="q39"><div class="q-stem"><span class="qn">39.</span> ... sharing our ______ [GIVE] about the first plan.</div><div class="trans-input-row"><input class="trans-field" id="tf39" placeholder="Nhập đáp án..." oninput="trackInput('39')"></div><div class="trans-fb" id="fb39"></div></div>
+  <div class="q" id="q40"><div class="q-stem"><span class="qn">40.</span> She listened carefully and helped us ______ [SCORE] the main problem:</div><div class="trans-input-row"><input class="trans-field" id="tf40" placeholder="Nhập đáp án..." oninput="trackInput('40')"></div><div class="trans-fb" id="fb40"></div></div>
+  <div class="q" id="q41"><div class="q-stem"><span class="qn">41.</span> ... details that were almost ______ [POINT] instead of focusing on what really mattered.</div><div class="trans-input-row"><input class="trans-field" id="tf41" placeholder="Nhập đáp án..." oninput="trackInput('41')"></div><div class="trans-fb" id="fb41"></div></div>
+  <div class="q" id="q42"><div class="q-stem"><span class="qn">42.</span> ... the discussion turned out to be ______ [FRUIT] because everyone learned ...</div><div class="trans-input-row"><input class="trans-field" id="tf42" placeholder="Nhập đáp án..." oninput="trackInput('42')"></div><div class="trans-fb" id="fb42"></div></div>
+  <div class="q" id="q43"><div class="q-stem"><span class="qn">43.</span> We realized that arguing over every small mistake was ______ [PRODUCE], ...</div><div class="trans-input-row"><input class="trans-field" id="tf43" placeholder="Nhập đáp án..." oninput="trackInput('43')"></div><div class="trans-fb" id="fb43"></div></div>
+  <div class="q" id="q44"><div class="q-stem"><span class="qn">44.</span> ... especially when we still had ______ [REMAIN] tasks to finish.</div><div class="trans-input-row"><input class="trans-field" id="tf44" placeholder="Nhập đáp án..." oninput="trackInput('44')"></div><div class="trans-fb" id="fb44"></div></div>
+  <div class="q" id="q45"><div class="q-stem"><span class="qn">45.</span> ... I had been almost ______ [SENSE] to my teammates' stress, ...</div><div class="trans-input-row"><input class="trans-field" id="tf45" placeholder="Nhập đáp án..." oninput="trackInput('45')"></div><div class="trans-fb" id="fb45"></div></div>
+</div>
+
+<!-- PART 3: ERROR CORRECTION -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">3</span>II. LEXICO-GRAMMAR – Part 3: Error Correction (Câu 46–50)</div>
+  <p class="sec-inst">Tìm 5 lỗi sai trong đoạn văn và sửa lại. Ghi số dòng và sửa đáp án vào ô bên dưới.</p>
+
+  <div class="error-text">
+    <div class="err-line"><span class="err-ln">1</span><span class="err-content">Contemporary public life has begun to feel strange, claustrophobic, and faintly</span></div>
+    <div class="err-line"><span class="err-ln">2</span><span class="err-content">hallucinatory, even <u>if</u> reality itself were shifting under our feet. Stories of demonic attacks, claims</span></div>
+    <div class="err-line"><span class="err-ln">3</span><span class="err-content">of teleportation, renewed religious conversion, humanoid robots, U.F.O. testimony, astrology, tarot,</span></div>
+    <div class="err-line"><span class="err-ln">4</span><span class="err-content">and energy healing all suggest that many people now feel surrounded by unseen forces. This</span></div>
+    <div class="err-line"><span class="err-ln">5</span><span class="err-content">atmosphere marks a kind of re-enchantment, because the material explanation no longer feels</span></div>
+    <div class="err-line"><span class="err-ln">6</span><span class="err-content">sufficient to explain ordinary American life. Max Weber <u>one</u> argued that modernity would drive</span></div>
+    <div class="err-line"><span class="err-ln">7</span><span class="err-content">mysterious forces out of the world, since science would explain, technology would master, and</span></div>
+    <div class="err-line"><span class="err-ln">8</span><span class="err-content">magic would disappear. For a short period, he seemed right, but digital overload has trained the</span></div>
+    <div class="err-line"><span class="err-ln">9</span><span class="err-content">mind to see patterns everywhere, even where none exist. A.I. has also weakened <u>uncommon</u></span></div>
+    <div class="err-line"><span class="err-ln">10</span><span class="err-content">standards of proof, because any claim can now be supplied with <u>convinced</u> evidence, and any</span></div>
+    <div class="err-line"><span class="err-ln">11</span><span class="err-content">evidence can now be dismissed as fake. At the same time, institutional decay has made the official</span></div>
+    <div class="err-line"><span class="err-ln">12</span><span class="err-content">story feel distant and suspect, especially when institutions have repeatedly failed the public. The</span></div>
+    <div class="err-line"><span class="err-ln">13</span><span class="err-content">result is a world that feels governed by hidden powers, unverifiable knowledge, and collapsing</span></div>
+    <div class="err-line"><span class="err-ln">14</span><span class="err-content">authority, which makes modern life feel strangely medieval. Re-enchantment itself is not</span></div>
+    <div class="err-line"><span class="err-ln">15</span><span class="err-content">necessarily the danger, but it becomes destructive when it lacks a stable community that can restrain</span></div>
+    <div class="err-line"><span class="err-ln">16</span><span class="err-content"><u>their</u> wildest instincts.</span></div>
+  </div>
+
+  <div class="err-q" id="q46">
+    <div class="err-q-stem"><span class="qn">46.</span> Dòng số: <input class="err-from" id="ln46" type="number" min="1" max="16" placeholder="dòng #" oninput="trackInput('46')"> &nbsp; Sai: <input class="err-from" id="wrong46" placeholder="từ sai" oninput="trackInput('46')"> → Sửa: <input class="err-to" id="tf46" placeholder="đáp án đúng" oninput="trackInput('46')"></div>
+    <div class="trans-fb" id="fb46"></div>
+  </div>
+  <div class="err-q" id="q47">
+    <div class="err-q-stem"><span class="qn">47.</span> Dòng số: <input class="err-from" id="ln47" type="number" min="1" max="16" placeholder="dòng #" oninput="trackInput('47')"> &nbsp; Sai: <input class="err-from" id="wrong47" placeholder="từ sai" oninput="trackInput('47')"> → Sửa: <input class="err-to" id="tf47" placeholder="đáp án đúng" oninput="trackInput('47')"></div>
+    <div class="trans-fb" id="fb47"></div>
+  </div>
+  <div class="err-q" id="q48">
+    <div class="err-q-stem"><span class="qn">48.</span> Dòng số: <input class="err-from" id="ln48" type="number" min="1" max="16" placeholder="dòng #" oninput="trackInput('48')"> &nbsp; Sai: <input class="err-from" id="wrong48" placeholder="từ sai" oninput="trackInput('48')"> → Sửa: <input class="err-to" id="tf48" placeholder="đáp án đúng" oninput="trackInput('48')"></div>
+    <div class="trans-fb" id="fb48"></div>
+  </div>
+  <div class="err-q" id="q49">
+    <div class="err-q-stem"><span class="qn">49.</span> Dòng số: <input class="err-from" id="ln49" type="number" min="1" max="16" placeholder="dòng #" oninput="trackInput('49')"> &nbsp; Sai: <input class="err-from" id="wrong49" placeholder="từ sai" oninput="trackInput('49')"> → Sửa: <input class="err-to" id="tf49" placeholder="đáp án đúng" oninput="trackInput('49')"></div>
+    <div class="trans-fb" id="fb49"></div>
+  </div>
+  <div class="err-q" id="q50">
+    <div class="err-q-stem"><span class="qn">50.</span> Dòng số: <input class="err-from" id="ln50" type="number" min="1" max="16" placeholder="dòng #" oninput="trackInput('50')"> &nbsp; Sai: <input class="err-from" id="wrong50" placeholder="từ sai" oninput="trackInput('50')"> → Sửa: <input class="err-to" id="tf50" placeholder="đáp án đúng" oninput="trackInput('50')"></div>
+    <div class="trans-fb" id="fb50"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- III. READING                                -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- READING PART 1: MULTIPLE CHOICE CLOZE -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">4</span>III. READING – Part 1: Multiple Choice Cloze (Câu 51–60)</div>
+  <p class="sec-inst">Chọn phương án đúng nhất (A, B, C, hoặc D) để điền vào mỗi chỗ trống.</p>
+
+  <div class="passage">
+    <p class="ptitle">The Restorative Power of Sleep</p>
+    <p>The idea that sleep is uniquely restorative has been <span class="bracket">(51)</span>______ for decades. Health writer Mara Feldman notes a 1940s magazine article <span class="bracket">(52)</span>______ up support for eight hours of sleep as the perfect rule, and a 1980s relaxation tape promising dramatic improvements in energy. Today, wellness influencers and sleep-tracking devices, supported by new workplace campaigns recommending more rest for productivity, <span class="bracket">(53)</span>______ this claim. Research does suggest a genuine, though moderate, effect. Dr. Alan Pierce, a sleep researcher, acknowledges sleep can help regulate mood and concentration but says benefits are often "oversold." Studies indicate consistent sleep promotes hormones linked to recovery and suppresses cortisol, the stress hormone. It also helps the brain process memories by <span class="bracket">(54)</span>______ mental recovery for several hours. <span class="bracket">(55)</span>______, this does not consistently lead to better performance for everyone, as many other factors influence focus.</p>
+    <p><span class="bracket">(56)</span>______ academic success, evidence for longer sleep routines is mixed but shows a small benefit. A 2022 review found students with stable sleep schedules scored slightly higher on memory tasks compared <span class="bracket">(57)</span>______ those with irregular routines. They may also help preserve emotional stability during stressful exam periods. This effect is in <span class="bracket">(58)</span>______ because proper sleep allows the brain to consolidate information more efficiently. However, improving long-term academic performance best requires <span class="bracket">(59)</span>______ training against distractions, such as limiting phone use and building steady study habits. Experts recommend seven to nine hours of sleep for most teenagers and adults, an amount many students still fail to reach. For true focus and health, prioritize regular routines and <span class="bracket">(60)</span>______ sleep with exercise.</p>
+  </div>
+
+  <div class="q" id="q51"><div class="q-stem"><span class="qn">51.</span> The idea that sleep is uniquely restorative has been ______ for decades.</div><div class="opts"><div class="opt"><label><input type="radio" name="q51" value="A"><span class="opt-l">A.</span>forced</label></div><div class="opt"><label><input type="radio" name="q51" value="B"><span class="opt-l">B.</span>pushed</label></div><div class="opt"><label><input type="radio" name="q51" value="C"><span class="opt-l">C.</span>squeezed</label></div><div class="opt"><label><input type="radio" name="q51" value="D"><span class="opt-l">D.</span>squashed</label></div></div><div class="fb" id="fb51"></div></div>
+
+  <div class="q" id="q52"><div class="q-stem"><span class="qn">52.</span> ... a 1940s magazine article ______ up support for eight hours of sleep ...</div><div class="opts"><div class="opt"><label><input type="radio" name="q52" value="A"><span class="opt-l">A.</span>banging</label></div><div class="opt"><label><input type="radio" name="q52" value="B"><span class="opt-l">B.</span>slamming</label></div><div class="opt"><label><input type="radio" name="q52" value="C"><span class="opt-l">C.</span>knocking</label></div><div class="opt"><label><input type="radio" name="q52" value="D"><span class="opt-l">D.</span>drumming</label></div></div><div class="fb" id="fb52"></div></div>
+
+  <div class="q" id="q53"><div class="q-stem"><span class="qn">53.</span> ... wellness influencers and sleep-tracking devices ... ______ this claim.</div><div class="opts"><div class="opt"><label><input type="radio" name="q53" value="A"><span class="opt-l">A.</span>amplify</label></div><div class="opt"><label><input type="radio" name="q53" value="B"><span class="opt-l">B.</span>modify</label></div><div class="opt"><label><input type="radio" name="q53" value="C"><span class="opt-l">C.</span>objectify</label></div><div class="opt"><label><input type="radio" name="q53" value="D"><span class="opt-l">D.</span>classify</label></div></div><div class="fb" id="fb53"></div></div>
+
+  <div class="q" id="q54"><div class="q-stem"><span class="qn">54.</span> It also helps the brain process memories by ______ mental recovery for several hours.</div><div class="opts"><div class="opt"><label><input type="radio" name="q54" value="A"><span class="opt-l">A.</span>gaining</label></div><div class="opt"><label><input type="radio" name="q54" value="B"><span class="opt-l">B.</span>unfolding</label></div><div class="opt"><label><input type="radio" name="q54" value="C"><span class="opt-l">C.</span>extending</label></div><div class="opt"><label><input type="radio" name="q54" value="D"><span class="opt-l">D.</span>expanding</label></div></div><div class="fb" id="fb54"></div></div>
+
+  <div class="q" id="q55"><div class="q-stem"><span class="qn">55.</span> ______, this does not consistently lead to better performance for everyone ...</div><div class="opts"><div class="opt"><label><input type="radio" name="q55" value="A"><span class="opt-l">A.</span>Nevertheless</label></div><div class="opt"><label><input type="radio" name="q55" value="B"><span class="opt-l">B.</span>Therefore</label></div><div class="opt"><label><input type="radio" name="q55" value="C"><span class="opt-l">C.</span>Indeed</label></div><div class="opt"><label><input type="radio" name="q55" value="D"><span class="opt-l">D.</span>Furthermore</label></div></div><div class="fb" id="fb55"></div></div>
+
+  <div class="q" id="q56"><div class="q-stem"><span class="qn">56.</span> ______ academic success, evidence for longer sleep routines is mixed ...</div><div class="opts"><div class="opt"><label><input type="radio" name="q56" value="A"><span class="opt-l">A.</span>Noting</label></div><div class="opt"><label><input type="radio" name="q56" value="B"><span class="opt-l">B.</span>Regarding</label></div><div class="opt"><label><input type="radio" name="q56" value="C"><span class="opt-l">C.</span>Viewing</label></div><div class="opt"><label><input type="radio" name="q56" value="D"><span class="opt-l">D.</span>Catching</label></div></div><div class="fb" id="fb56"></div></div>
+
+  <div class="q" id="q57"><div class="q-stem"><span class="qn">57.</span> ... students with stable sleep schedules scored slightly higher on memory tasks compared ______ those with irregular routines.</div><div class="opts"><div class="opt"><label><input type="radio" name="q57" value="A"><span class="opt-l">A.</span>over</label></div><div class="opt"><label><input type="radio" name="q57" value="B"><span class="opt-l">B.</span>about</label></div><div class="opt"><label><input type="radio" name="q57" value="C"><span class="opt-l">C.</span>to</label></div><div class="opt"><label><input type="radio" name="q57" value="D"><span class="opt-l">D.</span>out of</label></div></div><div class="fb" id="fb57"></div></div>
+
+  <div class="q" id="q58"><div class="q-stem"><span class="qn">58.</span> This effect is in ______ because proper sleep allows the brain to consolidate information more efficiently.</div><div class="opts"><div class="opt"><label><input type="radio" name="q58" value="A"><span class="opt-l">A.</span>bit</label></div><div class="opt"><label><input type="radio" name="q58" value="B"><span class="opt-l">B.</span>part</label></div><div class="opt"><label><input type="radio" name="q58" value="C"><span class="opt-l">C.</span>cut</label></div><div class="opt"><label><input type="radio" name="q58" value="D"><span class="opt-l">D.</span>portion</label></div></div><div class="fb" id="fb58"></div></div>
+
+  <div class="q" id="q59"><div class="q-stem"><span class="qn">59.</span> ... improving long-term academic performance best requires ______ training against distractions ...</div><div class="opts"><div class="opt"><label><input type="radio" name="q59" value="A"><span class="opt-l">A.</span>opposition</label></div><div class="opt"><label><input type="radio" name="q59" value="B"><span class="opt-l">B.</span>preservation</label></div><div class="opt"><label><input type="radio" name="q59" value="C"><span class="opt-l">C.</span>resistance</label></div><div class="opt"><label><input type="radio" name="q59" value="D"><span class="opt-l">D.</span>reservation</label></div></div><div class="fb" id="fb59"></div></div>
+
+  <div class="q" id="q60"><div class="q-stem"><span class="qn">60.</span> For true focus and health, prioritize regular routines and ______ sleep with exercise.</div><div class="opts"><div class="opt"><label><input type="radio" name="q60" value="A"><span class="opt-l">A.</span>pair</label></div><div class="opt"><label><input type="radio" name="q60" value="B"><span class="opt-l">B.</span>brace</label></div><div class="opt"><label><input type="radio" name="q60" value="C"><span class="opt-l">C.</span>span</label></div><div class="opt"><label><input type="radio" name="q60" value="D"><span class="opt-l">D.</span>peer</label></div></div><div class="fb" id="fb60"></div></div>
+</div>
+
+<!-- READING PART 2: OPEN CLOZE -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">5</span>III. READING – Part 2: Open Cloze (Câu 61–70)</div>
+  <p class="sec-inst">Điền <strong>MỘT</strong> từ thích hợp vào mỗi chỗ trống.</p>
+
+  <div class="ctext" style="line-height:2.1">
+    Civic education in America has begun to get back on its <span class="blank-input-wrap"><span class="blank-num">61</span><input class="blank-input" id="oc61" placeholder="____" oninput="trackOC('61')"></span> after years of decline, and this revival offers a rare source of hope amid political polarization. A decade <span class="blank-input-wrap"><span class="blank-num">62</span><input class="blank-input" id="oc62" placeholder="____" oninput="trackOC('62')"></span>, only one in four Americans could name the three branches of government, but by 2025, seven in ten could. Danielle Allen argues that civic education teaches citizens reflective patriotism, civil disagreement, the structure of government, and the ways ordinary people can participate <span class="blank-input-wrap"><span class="blank-num">63</span><input class="blank-input" id="oc63" placeholder="____" oninput="trackOC('63')"></span> democracy. Her own commitment began when she taught the Declaration of Independence to low-income adult learners and saw how powerfully it spoke <span class="blank-input-wrap"><span class="blank-num">64</span><input class="blank-input" id="oc64" placeholder="____" oninput="trackOC('64')"></span> their desire for personal and political change. The main obstacle to civic education has been adult polarization, because adults could not agree <span class="blank-input-wrap"><span class="blank-num">65</span><input class="blank-input" id="oc65" placeholder="____" oninput="trackOC('65')"></span> how to teach the nation's history and ideals, so many students received little instruction at <span class="blank-input-wrap"><span class="blank-num">66</span><input class="blank-input" id="oc66" placeholder="____" oninput="trackOC('66')"></span>. Civic educators overcame this problem by making compromises around ideas <span class="blank-input-wrap"><span class="blank-num">67</span><input class="blank-input" id="oc67" placeholder="____" oninput="trackOC('67')"></span> as "constitutional democracy," "reflective patriotism," and "pluralism." These compromises showed that civic education should not steer <span class="blank-input-wrap"><span class="blank-num">68</span><input class="blank-input" id="oc68" placeholder="____" oninput="trackOC('68')"></span> of hard questions, but should teach students how to build relationships, find shared values, and argue toward workable solutions. Recent progress is visible in new state policies, high school civics requirements, professional development for teachers, bipartisan support, and rising public knowledge of constitutional rights. <span class="blank-input-wrap"><span class="blank-num">69</span><input class="blank-input" id="oc69" placeholder="____" oninput="trackOC('69')"></span> many Americans feel anxious about the country's future, Allen believes the rebound in civic learning can help young people practice pluralism, civic friendship, and democratic responsibility <span class="blank-input-wrap"><span class="blank-num">70</span><input class="blank-input" id="oc70" placeholder="____" oninput="trackOC('70')"></span> the classroom.
+  </div>
+  <div class="oc-fb-row" id="oc-fb-row" style="display:none"></div>
+</div>
+
+<!-- READING PART 3: COMPREHENSION -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">6</span>III. READING – Part 3: Reading Comprehension (Câu 71–80)</div>
+  <p class="sec-inst">Chọn phương án đúng nhất (A, B, C, hoặc D) cho mỗi câu hỏi sau.</p>
+
+  <div class="passage">
+    <p class="ptitle">The History of Human Communication</p>
+    <p>Throughout human history, the movement of information has been shaped by the tools available for communication. In early societies, messages were carried by runners, riders, or ships, and the speed of communication depended largely on physical distance and weather conditions. Important announcements could take weeks or even months to reach distant regions. The invention of writing represented <strong><u>a major step forward</u></strong>, as it allowed laws, trade agreements, and historical records to be preserved more accurately than oral memory could manage. However, written messages still had to be transported by human or animal labor.</p>
+    <p>A dramatic change occurred with the development of printing in the fifteenth century. Before movable type became widespread in Europe, books were usually copied by hand, making them expensive and rare. Printing made it possible to reproduce texts in far greater numbers and at lower cost. As a result, religious ideas, scientific discoveries, and political arguments circulated more rapidly than ever before. Although printed material did not eliminate social inequality, <strong><u>it</u></strong> gave a growing number of people access to knowledge that had previously been limited to small educated groups. In this sense, printing helped transform information from a privilege into a more public resource.</p>
+    <p>By the nineteenth century, the telegraph introduced an even more radical shift. For the first time, messages could travel faster than people or goods. A businessperson in one city could receive market information from another city almost immediately, and newspapers could report distant events with unprecedented speed. The telephone later added the human voice to long-distance communication, allowing conversations to occur across large spaces. These inventions did not merely make communication quicker; they also changed people's expectations. Delays that had once seemed unavoidable began to appear inefficient or unacceptable.</p>
+    <p>In the late twentieth century, digital networks accelerated this transformation further. Email, mobile phones, and the internet reduced the cost of communication and enabled ordinary users to send information instantly across national borders. Social media platforms later allowed individuals to publish news, opinions, and images to large audiences without depending on traditional publishers. This development created new opportunities for education, activism, and cultural exchange. At the same time, it also made misinformation easier to spread. Unlike printed books or newspapers, online messages can be copied, altered, and shared by millions before their accuracy is checked.</p>
+    <p>Today, societies face the challenge of managing a world in which information is <strong><u>abundant</u></strong> but not always reliable. New technologies have made communication faster and more democratic, yet they have also placed greater responsibility on individuals to evaluate what they read and share. The history of communication, therefore, is not simply a story of progress from slow to fast. It is also a story of how each new medium changes the relationship between knowledge, power, and public judgment.</p>
+  </div>
+
+  <div class="q" id="q71"><div class="q-stem"><span class="qn">71.</span> What is the main topic of the passage?</div><div class="opts"><div class="opt"><label><input type="radio" name="q71" value="A"><span class="opt-l">A.</span>The development of transportation systems</label></div><div class="opt"><label><input type="radio" name="q71" value="B"><span class="opt-l">B.</span>A history of communication technologies</label></div><div class="opt"><label><input type="radio" name="q71" value="C"><span class="opt-l">C.</span>The rise of modern social media companies</label></div><div class="opt"><label><input type="radio" name="q71" value="D"><span class="opt-l">D.</span>The decline of printed books and newspapers</label></div></div><div class="fb" id="fb71"></div></div>
+
+  <div class="q" id="q72"><div class="q-stem"><span class="qn">72.</span> It can be inferred from the first paragraph that early communication was _____.</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q72" value="A"><span class="opt-l">A.</span>limited by the need to physically transport messages</label></div><div class="opt"><label><input type="radio" name="q72" value="B"><span class="opt-l">B.</span>more reliable than modern digital communication</label></div><div class="opt"><label><input type="radio" name="q72" value="C"><span class="opt-l">C.</span>mainly used for entertainment rather than official purposes</label></div><div class="opt"><label><input type="radio" name="q72" value="D"><span class="opt-l">D.</span>completely dependent on written language</label></div></div><div class="fb" id="fb72"></div></div>
+
+  <div class="q" id="q73"><div class="q-stem"><span class="qn">73.</span> The phrase "<u>a major step forward</u>" in paragraph 1 is CLOSEST in meaning to _____.</div><div class="opts"><div class="opt"><label><input type="radio" name="q73" value="A"><span class="opt-l">A.</span>a sudden failure</label></div><div class="opt"><label><input type="radio" name="q73" value="B"><span class="opt-l">B.</span>an important improvement</label></div><div class="opt"><label><input type="radio" name="q73" value="C"><span class="opt-l">C.</span>a temporary solution</label></div><div class="opt"><label><input type="radio" name="q73" value="D"><span class="opt-l">D.</span>an unexpected problem</label></div></div><div class="fb" id="fb73"></div></div>
+
+  <div class="q" id="q74"><div class="q-stem"><span class="qn">74.</span> What can be inferred about printing from paragraph 2?</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q74" value="A"><span class="opt-l">A.</span>It immediately removed all social inequality in Europe.</label></div><div class="opt"><label><input type="radio" name="q74" value="B"><span class="opt-l">B.</span>It was mainly used to prevent political ideas from spreading.</label></div><div class="opt"><label><input type="radio" name="q74" value="C"><span class="opt-l">C.</span>It made written knowledge available to a wider audience.</label></div><div class="opt"><label><input type="radio" name="q74" value="D"><span class="opt-l">D.</span>It caused handwritten books to become cheaper than printed ones.</label></div></div><div class="fb" id="fb74"></div></div>
+
+  <div class="q" id="q75"><div class="q-stem"><span class="qn">75.</span> The word "<u>it</u>" in paragraph 2 refers to _____.</div><div class="opts"><div class="opt"><label><input type="radio" name="q75" value="A"><span class="opt-l">A.</span>Europe</label></div><div class="opt"><label><input type="radio" name="q75" value="B"><span class="opt-l">B.</span>movable type</label></div><div class="opt"><label><input type="radio" name="q75" value="C"><span class="opt-l">C.</span>social inequality</label></div><div class="opt"><label><input type="radio" name="q75" value="D"><span class="opt-l">D.</span>printing</label></div></div><div class="fb" id="fb75"></div></div>
+
+  <div class="q" id="q76"><div class="q-stem"><span class="qn">76.</span> In paragraph 3, the author contrasts the telegraph with earlier methods of communication mainly to show that _____.</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q76" value="A"><span class="opt-l">A.</span>the telegraph was less useful than transportation networks</label></div><div class="opt"><label><input type="radio" name="q76" value="B"><span class="opt-l">B.</span>communication no longer had to move at the speed of physical travel</label></div><div class="opt"><label><input type="radio" name="q76" value="C"><span class="opt-l">C.</span>newspapers became unnecessary after the telegraph appeared</label></div><div class="opt"><label><input type="radio" name="q76" value="D"><span class="opt-l">D.</span>businesspeople stopped relying on market information</label></div></div><div class="fb" id="fb76"></div></div>
+
+  <div class="q" id="q77"><div class="q-stem"><span class="qn">77.</span> According to the passage, what was one important effect of the telephone?</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q77" value="A"><span class="opt-l">A.</span>It allowed people to hear one another over long distances.</label></div><div class="opt"><label><input type="radio" name="q77" value="B"><span class="opt-l">B.</span>It made printed newspapers disappear completely.</label></div><div class="opt"><label><input type="radio" name="q77" value="C"><span class="opt-l">C.</span>It prevented delays in all forms of communication.</label></div><div class="opt"><label><input type="radio" name="q77" value="D"><span class="opt-l">D.</span>It replaced the telegraph as soon as it was invented.</label></div></div><div class="fb" id="fb77"></div></div>
+
+  <div class="q" id="q78"><div class="q-stem"><span class="qn">78.</span> It can be inferred from the passage that digital networks _____.</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q78" value="A"><span class="opt-l">A.</span>made information sharing faster but also more difficult to control</label></div><div class="opt"><label><input type="radio" name="q78" value="B"><span class="opt-l">B.</span>reduced the amount of information available to ordinary people</label></div><div class="opt"><label><input type="radio" name="q78" value="C"><span class="opt-l">C.</span>restored traditional publishers as the only sources of news</label></div><div class="opt"><label><input type="radio" name="q78" value="D"><span class="opt-l">D.</span>made misinformation impossible to spread widely</label></div></div><div class="fb" id="fb78"></div></div>
+
+  <div class="q" id="q79"><div class="q-stem"><span class="qn">79.</span> The word "<u>abundant</u>" in paragraph 5 is OPPOSITE in meaning to _____.</div><div class="opts"><div class="opt"><label><input type="radio" name="q79" value="A"><span class="opt-l">A.</span>plentiful</label></div><div class="opt"><label><input type="radio" name="q79" value="B"><span class="opt-l">B.</span>limited</label></div><div class="opt"><label><input type="radio" name="q79" value="C"><span class="opt-l">C.</span>useful</label></div><div class="opt"><label><input type="radio" name="q79" value="D"><span class="opt-l">D.</span>modern</label></div></div><div class="fb" id="fb79"></div></div>
+
+  <div class="q" id="q80"><div class="q-stem"><span class="qn">80.</span> Which of the following best captures the author's overall view of humanity's changing relationship with communication?</div><div class="opts single-col"><div class="opt"><label><input type="radio" name="q80" value="A"><span class="opt-l">A.</span>Communication technology has improved speed and access to information, but each advance has also created new responsibilities and risks.</label></div><div class="opt"><label><input type="radio" name="q80" value="B"><span class="opt-l">B.</span>Modern communication is entirely superior to older forms because it allows all information to be checked instantly.</label></div><div class="opt"><label><input type="radio" name="q80" value="C"><span class="opt-l">C.</span>The history of communication shows that traditional publishers have always prevented the spread of false information.</label></div><div class="opt"><label><input type="radio" name="q80" value="D"><span class="opt-l">D.</span>New communication tools have mainly damaged society by replacing reliable face-to-face conversations.</label></div></div><div class="fb" id="fb80"></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- V. WRITING – PART 1: SENTENCE TRANSFORMATION -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">7</span>V. WRITING – Part 1: Sentence Transformation (Câu 81–85)</div>
+  <p class="sec-inst">Hoàn thành câu thứ hai sao cho nghĩa không thay đổi so với câu đã cho.</p>
+
+  <div class="trans-q" id="q81">
+    <div class="trans-original"><span class="qn">81.</span> It was wrong of you to blame her before hearing her side of the story.</div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ You</span>
+      <input class="trans-field" id="tf81" placeholder="... nhập phần còn lại ..." oninput="trackInput('81')">
+    </div>
+    <div class="trans-fb" id="fb81"></div>
+  </div>
+
+  <div class="trans-q" id="q82">
+    <div class="trans-original"><span class="qn">82.</span> I could not help you fix the problem because you did not tell me quickly enough.</div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ Had</span>
+      <input class="trans-field" id="tf82" placeholder="... nhập phần còn lại ..." oninput="trackInput('82')">
+    </div>
+    <div class="trans-fb" id="fb82"></div>
+  </div>
+
+  <div class="trans-q" id="q83">
+    <div class="trans-original"><span class="qn">83.</span> I arrived home, and it started raining heavily immediately after.</div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ No</span>
+      <input class="trans-field" id="tf83" placeholder="... nhập phần còn lại ..." oninput="trackInput('83')">
+    </div>
+    <div class="trans-fb" id="fb83"></div>
+  </div>
+
+  <div class="trans-q" id="q84">
+    <div class="trans-original"><span class="qn">84.</span> You should take your studies more seriously.</div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ It's high</span>
+      <input class="trans-field" id="tf84" placeholder="... nhập phần còn lại ..." oninput="trackInput('84')">
+    </div>
+    <div class="trans-fb" id="fb84"></div>
+  </div>
+
+  <div class="trans-q" id="q85">
+    <div class="trans-original"><span class="qn">85.</span> Whatever happens, I will stand by your side.</div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ Come</span>
+      <input class="trans-field" id="tf85" placeholder="... nhập phần còn lại ..." oninput="trackInput('85')">
+    </div>
+    <div class="trans-fb" id="fb85"></div>
+  </div>
+</div>
+
+<!-- WRITING PART 1 – KEY WORD TRANSFORM -->
+<div class="sec">
+  <div class="sec-ttl"><span class="sec-n">8</span>V. WRITING – Part 1: Key Word Transformation (Câu 86–90)</div>
+  <p class="sec-inst">Dùng từ gợi ý trong ngoặc (không thay đổi dạng từ) để hoàn thành câu thứ hai. Dùng 2–6 từ kể cả từ gợi ý.</p>
+
+  <div class="trans-q" id="q86">
+    <div class="trans-original"><span class="qn">86.</span> I regret not accepting their offer when I had the chance. <span class="kw-badge">TAKEN</span></div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ Would</span>
+      <input class="trans-field" id="tf86" placeholder="... (TAKEN) ..." oninput="trackInput('86')">
+      <span class="trans-suffix">their offer when I had the chance.</span>
+    </div>
+    <div class="trans-fb" id="fb86"></div>
+  </div>
+
+  <div class="trans-q" id="q87">
+    <div class="trans-original"><span class="qn">87.</span> You need to drive faster if you want to merge safely onto the highway. <span class="kw-badge">PEDAL</span></div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ You need to</span>
+      <input class="trans-field" id="tf87" placeholder="... (PEDAL) ..." oninput="trackInput('87')">
+      <span class="trans-suffix">if you want to merge safely onto the highway.</span>
+    </div>
+    <div class="trans-fb" id="fb87"></div>
+  </div>
+
+  <div class="trans-q" id="q88">
+    <div class="trans-original"><span class="qn">88.</span> They decided to secretly study the place for several days before breaking into the store. <span class="kw-badge">JOINT</span></div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ They made</span>
+      <input class="trans-field" id="tf88" placeholder="... (JOINT) ..." oninput="trackInput('88')">
+      <span class="trans-suffix">for several days before breaking into the store.</span>
+    </div>
+    <div class="trans-fb" id="fb88"></div>
+  </div>
+
+  <div class="trans-q" id="q89">
+    <div class="trans-original"><span class="qn">89.</span> We were surprised that the plan was successful. <span class="kw-badge">DAY</span></div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ To our</span>
+      <input class="trans-field" id="tf89" placeholder="... (DAY) ..." oninput="trackInput('89')">
+    </div>
+    <div class="trans-fb" id="fb89"></div>
+  </div>
+
+  <div class="trans-q" id="q90">
+    <div class="trans-original"><span class="qn">90.</span> They report that the manager criticized Jimmy harshly during the meeting. <span class="kw-badge">INTO</span></div>
+    <div class="trans-input-row">
+      <span class="trans-prefix">→ The manager</span>
+      <input class="trans-field" id="tf90" placeholder="... (INTO) ..." oninput="trackInput('90')">
+      <span class="trans-suffix">Jimmy during the meeting.</span>
+    </div>
+    <div class="trans-fb" id="fb90"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- WRITING PART 2 – PARAGRAPH – GỢI Ý         -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec listen-sec">
+  <div class="sec-ttl" style="background:linear-gradient(90deg,#5a4a2a,#8b6914)">✍️ V. WRITING – Part 2: Paragraph Writing &nbsp;<span style="font-size:.75rem;font-weight:400;opacity:.85">(Gợi ý – Không tính điểm)</span></div>
+  <div class="listen-notice" style="background:#fef9e7;border-color:#c9a227;color:#7a5a10">📝 Phần viết đoạn văn: Thực hành tự do. Đáp án mẫu và gợi ý được cung cấp phía dưới. Không tính điểm tự động.</div>
+
+  <div class="writing-sec">
+    <div class="writing-topic">
+      <strong>Đề bài:</strong> Many students believe that learning a foreign language is more useful than learning how to play a musical instrument.<br>
+      <em style="font-size:.84rem;color:#7a5a10">Write a paragraph of about 140–160 words expressing your opinion on this view.</em>
+    </div>
+
+    <div class="writing-notice">ℹ️ Phần này chỉ hiển thị gợi ý. Viết bài của bạn vào ô bên dưới để luyện tập.</div>
+
+    <details class="writing-hints">
+      <summary>💡 Gợi ý cấu trúc đoạn văn (nhấn để mở)</summary>
+      <div class="writing-hints-body">
+        <p><strong>Cấu trúc đoạn văn Opinion Paragraph (140–160 từ):</strong></p>
+        <ul>
+          <li><strong>Topic sentence:</strong> Nêu rõ quan điểm của bạn (đồng ý / không đồng ý / đồng ý một phần).</li>
+          <li><strong>Supporting idea 1 + Example:</strong> Lý do thứ nhất ủng hộ quan điểm. Ví dụ cụ thể.</li>
+          <li><strong>Supporting idea 2 + Example:</strong> Lý do thứ hai. Ví dụ cụ thể.</li>
+          <li><strong>Concession (optional):</strong> Thừa nhận điểm mạnh của quan điểm đối lập.</li>
+          <li><strong>Concluding sentence:</strong> Tóm tắt lại quan điểm của bạn.</li>
+        </ul>
+        <p><strong>Từ vựng gợi ý:</strong> <em>practical skills, employability, cross-cultural understanding, cognitive development, emotional outlet, discipline, perseverance, bilateral brain stimulation, lingua franca, globalization</em></p>
+        <p><strong>Đáp án mẫu (quan điểm đồng ý một phần):</strong><br>
+        <em>While I acknowledge that learning a foreign language offers undeniable practical advantages in today's globalized world, I believe the comparison oversimplifies what education should achieve. Mastering a foreign language clearly opens doors to wider employment opportunities, facilitates cross-cultural communication, and enhances cognitive flexibility. For instance, students proficient in English or Mandarin gain access to international job markets that their monolingual peers cannot. However, learning a musical instrument cultivates equally vital qualities: emotional discipline, creative thinking, and perseverance under pressure. Research suggests that musical training strengthens neural pathways involved in memory and abstract reasoning, skills that benefit academic performance across subjects. Therefore, rather than viewing these two pursuits as rivals, schools and students would do well to recognize them as complementary investments in human development. The ideal is not to choose one over the other, but to appreciate how each uniquely enriches the learner.</em></p>
+      </div>
+    </details>
+
+    <textarea id="essay" placeholder="Viết đoạn văn của bạn tại đây (140–160 từ)..." oninput="updateWC()"></textarea>
+    <div class="wc">Số từ: <strong id="wc">0</strong> / mục tiêu 140–160</div>
+    <p class="crit-note">⚠️ Phần này không được chấm điểm tự động. Hãy tự so sánh với đáp án mẫu hoặc nộp cho giáo viên.</p>
+  </div>
+</div>
+
+<!-- ANSWER KEY -->
+<div class="sec" id="ak-section">
+  <div class="sec-ttl">🔑 ĐÁP ÁN THAM KHẢO (Phần tính điểm: Câu 21–80 + 81–90)</div>
+  <div class="ak-locked" id="ak-locked">
+    <span class="ak-lock-icon">🔒</span>
+    <span class="ak-lock-msg">Đáp án sẽ hiển thị sau khi bạn <strong>Chấm Điểm</strong> toàn bài.</span>
+  </div>
+  <button class="ak-toggle" id="ak-toggle-btn" onclick="toggleAK(this)" style="display:none">▼ Hiện / Ẩn đáp án trắc nghiệm</button>
+  <div class="ak-grid" id="ak"></div>
+  <table class="sum-table" id="sum">
+    <thead><tr><th>#</th><th>Phần</th><th>Đáp án đúng</th><th>Bạn chọn</th><th>Kết quả</th></tr></thead>
+    <tbody id="sum-body"></tbody>
+  </table>
+</div>
+
+<footer>Đề Thực Chiến Chuyên Anh – Đề Luyện Tập Số 12 – KỲ THI TUYỂN SINH VÀO LỚP 10 THPT NĂM HỌC 2026-2027 – Phú Thọ</footer>
+</div><!-- /wrap -->
+
+<script>
+// ─── ANSWER KEY ───────────────────────────────────────────────────────────────
+// MCQ (radio): q21–q35, q51–q60, q71–q80
+const MCQ_KEY = {
+  // Lexico-Grammar 21-35 (FIXED)
+  21:'D', // should have noticed
+  22:'A', // in view of
+  23:'A', // riddled WITH
+  24:'B', // had the team communicated (inversion)
+  25:'B', // so be it
+  26:'C', // All safety checks completed (absolute phrase)
+  27:'D', // comparable to that of the national arena...
+  28:'B', // cozy old Canadian wooden (OSASCOMP order)
+  29:'B', // give off
+  30:'A', // has yet to be evaluated
+  31:'D', // prohibitively expensive
+  32:'A', // in the line of duty
+  33:'C', // punch the clock
+  34:'B', // so messy as to be
+  35:'D', // swung (at/for)
+  // Reading Cloze 51-60 (FIXED)
+  51:'B', // pushed (pushed for decades)
+  52:'D', // drumming up support
+  53:'A', // amplify
+  54:'C', // extending mental recovery
+  55:'A', // Nevertheless
+  56:'B', // Regarding
+  57:'C', // compared TO
+  58:'B', // in part
+  59:'C', // resistance training
+  60:'A', // pair sleep with exercise
+  // Reading Comprehension 71-80 (correct)
+  71:'B',72:'A',73:'B',74:'C',75:'D',76:'B',77:'A',78:'A',79:'B',80:'A'
+};
+
+// Word formation (text input): q36–q45
+const WF_KEY = {
+  36:'appraisal', 37:'strikingly', 38:'approachable', 39:'misgivings', 40:'underscore',
+  41:'pointless', 42:'fruitful', 43:'unproductive', 44:'remaining', 45:'insensitive'
+};
+
+// Error correction (FIXED - full phrase where needed)
+const ERR_KEY = {
+  46: {line:'2', wrong:'even if', correct:'as if'},       // subjunctive: as if reality were...
+  47: {line:'6', wrong:'one',     correct:'once'},         // Weber once argued
+  48: {line:'9', wrong:'uncommon',correct:'common'},       // weakened COMMON standards
+  49: {line:'10',wrong:'convinced',correct:'convincing'},  // convincing evidence
+  50: {line:'16',wrong:'their',   correct:'its'}           // community → its
+};
+
+// Open cloze (oc61–oc70)
+const OC_KEY = {
+  61:'feet', 62:'ago', 63:'in', 64:'to', 65:'on',
+  66:'all', 67:'such', 68:'clear', 69:'although', 70:'beyond'
+};
+// Accept alternates
+const OC_ALT = {
+  69:['although','though'], 70:['beyond','outside']
+};
+
+// Sentence transformation (tf81–tf90) – keyword-based flexible matching
+const TRANS_KEY = {
+  81: {hint:'should not have blamed her before hearing her side of the story', keys:['should not have blamed','before hearing']},
+  82: {hint:'you told me quickly enough, I could have helped you fix the problem', keys:['you told me quickly enough','could have helped']},
+  83: {hint:'sooner had I arrived home than it started raining heavily', keys:['sooner had i arrived','than it started raining']},
+  84: {hint:'time you took your studies more seriously', keys:['time you took','seriously']},
+  85: {hint:'what may, I will stand by your side', keys:['what may','stand by']},
+  86: {hint:'that I had taken up / that I had taken', keys:['that i had taken']},
+  87: {hint:'step on the gas pedal', keys:['step on the gas pedal','pedal']},
+  88: {hint:'a / the decision to case the joint', keys:['case the joint']},
+  89: {hint:'surprise, the plan carried the day', keys:['carried the day']},
+  90: {hint:'is reported to have laid / tore / ripped into', keys:['laid into','tore into','ripped into','reported to have']}
+};
+
+// ─── TRACKING ─────────────────────────────────────────────────────────────────
+let answered = new Set();
+const TOTAL_GRADEABLE = 70; // 15 MCQ lexico + 10 wf + 5 err + 10 MCQ reading1 + 10 oc + 10 MCQ reading3 + 5 trans + 5 kwt
+
+document.querySelectorAll('input[type=radio]').forEach(r => {
+  r.addEventListener('change', () => {
+    const n = r.name.replace('q','');
+    if(MCQ_KEY[parseInt(n)] !== undefined) { answered.add(n); updateProgress(); }
+  });
+});
+
+function trackInput(n) {
+  const el = document.getElementById('tf'+n) || document.getElementById('oc'+n);
+  if(el && el.value.trim()) answered.add(n); else answered.delete(n);
+  updateProgress();
+}
+function trackOC(n) { trackInput(n); }
+
+function updateProgress() {
+  const c = answered.size;
+  document.getElementById('pc').textContent = c + ' / ' + TOTAL_GRADEABLE;
+  document.getElementById('pf').style.width = Math.min(c/TOTAL_GRADEABLE*100,100) + '%';
+}
+
+// ─── GRADING ──────────────────────────────────────────────────────────────────
+function gradeAll() {
+  // Enforce: must complete all questions before submitting
+  if(answered.size < TOTAL_GRADEABLE && !examDone) {
+    const remaining = TOTAL_GRADEABLE - answered.size;
+    const proceed = confirm(`⚠️ Bạn còn ${remaining} câu chưa làm!\n\nTiến độ hiện tại: ${answered.size} / ${TOTAL_GRADEABLE} câu.\n\nBấm OK để nộp bài ngay (câu bỏ trống tính sai), hoặc Hủy để tiếp tục làm bài.`);
+    if(!proceed) return;
+  }
+  examDone=true; clearInterval(timerInt);
+  let ok=0, no=0, bl=0, rows=[];
+
+  // Helper: mark MCQ question
+  function gradeMCQ(i) {
+    const qDiv = document.getElementById('q'+i);
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById('fb'+i);
+    qDiv.querySelectorAll('.opt').forEach(o => o.classList.remove('ok','no','ans'));
+    fb.className='fb'; fb.textContent='';
+    const correct = MCQ_KEY[i];
+    if(!sel){ bl++; rows.push({i, correct, chosen:'–', ok:false}); return; }
+    const chosen = sel.value;
+    const chosenOpt = sel.closest('.opt');
+    const correctOpt = qDiv.querySelector(`input[value="${correct}"]`)?.closest('.opt');
+    if(chosen===correct){
+      ok++; chosenOpt.classList.add('ok');
+      fb.className='fb ok'; fb.textContent='✓ Chính xác!';
+      rows.push({i, correct, chosen, ok:true});
+    } else {
+      no++; chosenOpt.classList.add('no');
+      if(correctOpt) correctOpt.classList.add('ans');
+      fb.className='fb no'; fb.innerHTML=`✗ Sai &nbsp;|&nbsp; Đáp án: <strong>${correct}</strong>`;
+      rows.push({i, correct, chosen, ok:false});
+    }
+  }
+
+  // MCQ
+  [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,
+   51,52,53,54,55,56,57,58,59,60,
+   71,72,73,74,75,76,77,78,79,80].forEach(i => gradeMCQ(i));
+
+  // Word formation
+  for(let i=36;i<=45;i++){
+    const el=document.getElementById('tf'+i);
+    const fb=document.getElementById('fb'+i);
+    fb.className='fb'; fb.textContent='';
+    const correct=WF_KEY[i];
+    if(!el||!el.value.trim()){bl++;rows.push({i,correct,chosen:'–',ok:false});continue;}
+    const chosen=el.value.trim().toLowerCase();
+    el.classList.remove('ok','no');
+    if(chosen===correct.toLowerCase()){
+      ok++; el.classList.add('ok');
+      fb.className='trans-fb ok'; fb.innerHTML=`✓ Chính xác! &nbsp;→ <strong>${correct}</strong>`;
+      rows.push({i,correct,chosen:el.value.trim(),ok:true});
+    } else {
+      no++; el.classList.add('no');
+      fb.className='trans-fb no'; fb.innerHTML=`✗ Sai &nbsp;|&nbsp; Đáp án đúng: <strong>${correct}</strong>`;
+      rows.push({i,correct,chosen:el.value.trim(),ok:false});
+    }
+  }
+
+  // Error correction – grade line number + wrong word + corrected word (tf46-tf50)
+  for(let i=46;i<=50;i++){
+    const tfEl=document.getElementById('tf'+i);
+    const lnEl=document.getElementById('ln'+i);
+    const wrongEl=document.getElementById('wrong'+i);
+    const fb=document.getElementById('fb'+i);
+    fb.className='trans-fb'; fb.textContent='';
+    const ans=ERR_KEY[i];
+    const tfVal=tfEl?tfEl.value.trim():'';
+    const lnVal=lnEl?lnEl.value.trim():'';
+    const wrongVal=wrongEl?wrongEl.value.trim():'';
+    if(!tfVal&&!lnVal&&!wrongVal){bl++;rows.push({i,correct:`Dòng ${ans.line}: ${ans.wrong} → ${ans.correct}`,chosen:'–',ok:false});continue;}
+    tfEl.classList.remove('ok','no');
+    const tfOk = tfVal.toLowerCase()===ans.correct.toLowerCase();
+    const lnOk = lnVal===String(ans.line);
+    const wrongOk = wrongVal.toLowerCase()===ans.wrong.toLowerCase();
+    if(tfOk && lnOk && wrongOk){
+      ok++; tfEl.classList.add('ok');
+      fb.className='trans-fb ok'; fb.innerHTML=`✓ Đúng! Dòng ${ans.line}: <strong>${ans.wrong}</strong> → <strong>${ans.correct}</strong>`;
+      rows.push({i,correct:`Dòng ${ans.line}: ${ans.wrong} → ${ans.correct}`,chosen:`Dòng ${lnVal}: ${wrongVal} → ${tfVal}`,ok:true});
+    } else {
+      no++; tfEl.classList.add('no');
+      let hint='';
+      if(!lnOk) hint+=` Dòng đúng: ${ans.line}.`;
+      if(!wrongOk) hint+=` Từ sai đúng: "${ans.wrong}".`;
+      if(!tfOk) hint+=` Sửa thành: "${ans.correct}".`;
+      fb.className='trans-fb no'; fb.innerHTML=`✗ Sai &nbsp;|&nbsp; Đáp án: Dòng ${ans.line}: <strong>${ans.wrong}</strong> → <strong>${ans.correct}</strong>${hint?'<br><em>'+hint+'</em>':''}`;
+      rows.push({i,correct:`Dòng ${ans.line}: ${ans.wrong} → ${ans.correct}`,chosen:`Dòng ${lnVal||'?'}: ${wrongVal||'?'} → ${tfVal||'?'}`,ok:false});
+    }
+  }
+
+  // Open cloze
+  const ocFbRow = document.getElementById('oc-fb-row');
+  ocFbRow.innerHTML=''; ocFbRow.style.display='flex';
+  for(let i=61;i<=70;i++){
+    const el=document.getElementById('oc'+i);
+    const correct=OC_KEY[i];
+    const alts=OC_ALT[i]||[correct];
+    const allAcc=alts.map(a=>a.toLowerCase());
+    if(!el||!el.value.trim()){
+      bl++; el&&el.classList.remove('checked-ok','checked-no');
+      if(el){el.classList.add('checked-no');}
+      const span=document.createElement('span');
+      span.className='oc-fb-item no-item';
+      span.textContent=`(${i}) – [Bỏ] → ${correct}`;
+      ocFbRow.appendChild(span);
+      rows.push({i,correct,chosen:'–',ok:false}); continue;
+    }
+    const chosen=el.value.trim().toLowerCase();
+    el.classList.remove('checked-ok','checked-no');
+    const span=document.createElement('span');
+    if(allAcc.includes(chosen)){
+      ok++; el.classList.add('checked-ok');
+      span.className='oc-fb-item ok-item';
+      span.textContent=`(${i}) ✓ ${el.value.trim()}`;
+      rows.push({i,correct,chosen:el.value.trim(),ok:true});
+    } else {
+      no++; el.classList.add('checked-no');
+      span.className='oc-fb-item no-item';
+      span.textContent=`(${i}) ✗ ${el.value.trim()} → ${correct}`;
+      rows.push({i,correct,chosen:el.value.trim(),ok:false});
+    }
+    ocFbRow.appendChild(span);
+  }
+
+  // Sentence transformation (81–90) – flexible keyword check
+  for(let i=81;i<=90;i++){
+    const el=document.getElementById('tf'+i);
+    const fb=document.getElementById('fb'+i);
+    fb.className='trans-fb'; fb.textContent='';
+    const ans=TRANS_KEY[i];
+    if(!el||!el.value.trim()){bl++;rows.push({i,correct:ans.hint,chosen:'–',ok:false});continue;}
+    const chosen=el.value.trim().toLowerCase();
+    el.classList.remove('ok','no');
+    const matched=ans.keys.every(k=>chosen.includes(k.toLowerCase()));
+    if(matched){
+      ok++; el.classList.add('ok');
+      fb.className='trans-fb ok'; fb.innerHTML=`✓ Chấp nhận! &nbsp;Gợi ý đầy đủ: <em>${ans.hint}</em>`;
+      rows.push({i,correct:ans.hint,chosen:el.value.trim(),ok:true});
+    } else {
+      no++; el.classList.add('no');
+      fb.className='trans-fb no'; fb.innerHTML=`✗ Sai &nbsp;|&nbsp; Gợi ý đáp án: <em>${ans.hint}</em>`;
+      rows.push({i,correct:ans.hint,chosen:el.value.trim(),ok:false});
+    }
+  }
+
+  // Score display
+  const pct = Math.round(ok/TOTAL_GRADEABLE*100);
+  document.getElementById('s-ok').textContent=ok;
+  document.getElementById('s-no').textContent=no;
+  document.getElementById('s-bl').textContent=bl;
+  document.getElementById('s-pt').textContent=pct+'%';
+
+  // Summary table
+  const tbody=document.getElementById('sum-body');
+  tbody.innerHTML='';
+  const secName = n => {
+    if(n>=21&&n<=35)return'Lexico-Grammar P1';
+    if(n>=36&&n<=45)return'Word Formation';
+    if(n>=46&&n<=50)return'Error Correction';
+    if(n>=51&&n<=60)return'Reading Cloze';
+    if(n>=61&&n<=70)return'Open Cloze';
+    if(n>=71&&n<=80)return'Reading Comp.';
+    if(n>=81&&n<=85)return'Sentence Trans.';
+    if(n>=86&&n<=90)return'Key Word Trans.';
+    return'–';
+  };
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${String(r.i).padStart(2,'0')}</td><td>${secName(r.i)}</td><td>${r.correct}</td><td>${r.chosen}</td><td>${r.ok?'✅ Đúng':'❌ Sai'}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('sum').classList.add('on');
+  document.getElementById('scorepanel').scrollIntoView({behavior:'smooth',block:'start'});
+  // Unlock answer key
+  const akLocked = document.getElementById('ak-locked');
+  const akBtn = document.getElementById('ak-toggle-btn');
+  if (akLocked) akLocked.style.display = 'none';
+  if (akBtn) akBtn.style.display = '';
+}
+
+// ─── RESET ────────────────────────────────────────────────────────────────────
+function resetAll(){
+  if(!confirm('Làm lại? Toàn bộ câu trả lời và bộ đếm vi phạm sẽ bị xóa.')) return;
+  examDone=false; cheatCount=0; cheatLog=[]; examStartTime=new Date();
+  secsLeft=TOTAL_SECS; clearInterval(timerInt);
+  timerPaused=false;
+  const toggleBtn=document.getElementById('timerToggleBtn');
+  const disp=document.getElementById('timerDisplay');
+  toggleBtn.textContent='⏸'; toggleBtn.classList.remove('paused');
+  disp.classList.remove('paused');
+  timerInt=setInterval(tickTimer,1000);
+  document.getElementById('timerDisplay').textContent=fmtTime(TOTAL_SECS);
+  document.getElementById('timerFill').style.width='100%';
+  document.getElementById('timerDisplay').classList.remove('twarn','tdanger');
+  attemptCount++;
+  try { localStorage.setItem(ATTEMPT_KEY, attemptCount); } catch(e){}
+  document.getElementById('attemptNum').textContent=attemptCount;
+  document.getElementById('pdfInfo').style.display='none';
+  document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+  document.querySelectorAll('.trans-field,.blank-input,.err-from,.err-to').forEach(el=>{
+    el.value=''; el.classList.remove('ok','no','checked-ok','checked-no');
+  });
+  document.querySelectorAll('.fb,.trans-fb').forEach(el=>{el.className=el.className.replace(/\bok\b|\bno\b/g,'').trim();el.textContent='';el.style.display='';});
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('ok','no','ans'));
+  answered.clear(); updateProgress();
+  document.getElementById('s-ok').textContent='–';
+  document.getElementById('s-no').textContent='–';
+  document.getElementById('s-bl').textContent='–';
+  document.getElementById('s-pt').textContent='–';
+  document.getElementById('sum').classList.remove('on');
+  document.getElementById('sum-body').innerHTML='';
+  const ocFbRow=document.getElementById('oc-fb-row');
+  if(ocFbRow){ocFbRow.innerHTML='';ocFbRow.style.display='none';}
+  // Re-lock answer key
+  const akLocked = document.getElementById('ak-locked');
+  const akBtn = document.getElementById('ak-toggle-btn');
+  if (akLocked) akLocked.style.display = '';
+  if (akBtn) { akBtn.style.display='none'; }
+  const akGrid = document.getElementById('ak');
+  if (akGrid) akGrid.classList.remove('on');
+  if (akBtn) akBtn.textContent='▼ Hiện / Ẩn đáp án trắc nghiệm';
+}
+
+// ─── ANSWER KEY DISPLAY (MCQ only, 21-35, 51-60, 71-80) ──────────────────────
+(function(){
+  const g=document.getElementById('ak');
+  const mcqNums=[21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,
+                 51,52,53,54,55,56,57,58,59,60,
+                 71,72,73,74,75,76,77,78,79,80];
+  mcqNums.forEach(i=>{
+    const c=document.createElement('div');
+    c.className='ak-cell'; c.id='ak'+i;
+    c.innerHTML=`<span class="an">${String(i).padStart(2,'0')}</span><span class="aa">${MCQ_KEY[i]}</span>`;
+    g.appendChild(c);
+  });
+})();
+
+function toggleAK(btn){
+  const g=document.getElementById('ak');
+  g.classList.toggle('on');
+  btn.textContent=g.classList.contains('on')?'▲ Ẩn đáp án':'▼ Hiện / Ẩn đáp án trắc nghiệm';
+}
+
+
+// ══════════════════════════════════════════════════════
+// ATTEMPT COUNTER
+// ══════════════════════════════════════════════════════
+const ATTEMPT_KEY = 'de12_phu_tho_attempts';
+// Only increment on first true page load (not in-page reset)
+let attemptCount = parseInt(localStorage.getItem(ATTEMPT_KEY)||'0') + 1;
+try { localStorage.setItem(ATTEMPT_KEY, attemptCount); } catch(e){}
+document.getElementById('attemptNum').textContent = attemptCount;
+
+// ══════════════════════════════════════════════════════
+// CHEAT DETECTION
+// ══════════════════════════════════════════════════════
+let cheatCount = 0;
+let cheatLog = [];
+let examStartTime = new Date();
+let examDone = false;
+
+function triggerCheat(type) {
+  if(examDone) return;
+  cheatCount++;
+  const t = new Date().toLocaleTimeString('vi-VN');
+  const elapsed = Math.round((new Date()-examStartTime)/1000);
+  const m = Math.floor(elapsed/60), s = elapsed%60;
+  cheatLog.push(type + ' [' + t + ', sau ' + m + 'p' + s + 's]');
+  // Silent logging only – no popup shown to student
+  document.getElementById('cheatCount').textContent = cheatCount;
+  document.getElementById('cheatTimes').textContent = cheatCount;
+}
+
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden) triggerCheat('Chuyển tab / thu nhỏ cửa sổ');
+});
+// window.blur listener removed – causes false positives (e.g. click on iframe, dev tools)
+
+// F5 / beforeunload
+window.addEventListener('beforeunload', (e) => {
+  if(examDone) return;
+  // Save pending cheat count so next load can read it
+  try {
+    const cur = parseInt(localStorage.getItem('de12_reload_cheat')||'0');
+    localStorage.setItem('de12_reload_cheat', cur+1);
+  } catch(err){}
+  e.preventDefault(); e.returnValue=''; return '';
+});
+
+// Check reload cheat from previous page load
+(function(){
+  try {
+    const rc = parseInt(localStorage.getItem('de12_reload_cheat')||'0');
+    if(rc > 0) {
+      cheatCount += rc;
+      for(let i=0;i<rc;i++) cheatLog.push('Tải lại trang (F5/Ctrl+R)');
+      document.getElementById('cheatCount').textContent = cheatCount;
+      document.getElementById('cheatTimes').textContent = cheatCount;
+      // Silent logging – no popup/notice shown
+      localStorage.removeItem('de12_reload_cheat');
+    }
+  } catch(err){}
+})();
+
+// ══════════════════════════════════════════════════════
+// TIMER (90 phút)
+// ══════════════════════════════════════════════════════
+const TOTAL_SECS = 90*60;
+let secsLeft = TOTAL_SECS;
+let timerInt = null;
+
+function fmtTime(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+
+function tickTimer(){
+  if(secsLeft<=0){
+    clearInterval(timerInt);
+    document.getElementById('timerDisplay').textContent='00:00';
+    document.getElementById('timerFill').style.width='0%';
+    document.getElementById('timeupOverlay').classList.add('show');
+    return;
+  }
+  secsLeft--;
+  const el=document.getElementById('timerDisplay');
+  el.textContent=fmtTime(secsLeft);
+  document.getElementById('timerFill').style.width=(secsLeft/TOTAL_SECS*100)+'%';
+  el.classList.remove('twarn','tdanger');
+  if(secsLeft<=300) el.classList.add('tdanger');
+  else if(secsLeft<=900) el.classList.add('twarn');
+}
+
+// ─── TIMER TOGGLE ─────────────────────────────────────────────────────────────
+let timerPaused = false;
+
+function toggleTimer() {
+  const btn = document.getElementById('timerToggleBtn');
+  const disp = document.getElementById('timerDisplay');
+  if (timerPaused) {
+    // Resume
+    timerPaused = false;
+    timerInt = setInterval(tickTimer, 1000);
+    btn.textContent = '⏸';
+    btn.classList.remove('paused');
+    disp.classList.remove('paused');
+    btn.title = 'Tạm dừng đồng hồ';
+  } else {
+    // Pause
+    timerPaused = true;
+    clearInterval(timerInt);
+    btn.textContent = '▶ Tiếp tục';
+    btn.classList.add('paused');
+    disp.classList.add('paused');
+    btn.title = 'Tiếp tục đồng hồ';
+  }
+}
+
+timerInt = setInterval(tickTimer, 1000);
+
+function handleTimeUp(){
+  document.getElementById('timeupOverlay').classList.remove('show');
+  examDone=true; clearInterval(timerInt);
+  gradeAll();
+  document.getElementById('scorepanel').scrollIntoView({behavior:'smooth'});
+}
+
+// ══════════════════════════════════════════════════════
+// PDF EXPORT
+// ══════════════════════════════════════════════════════
+function exportPDF(){
+  const now = new Date();
+  const usedMin = Math.round((now - examStartTime)/60000);
+  const remaining = fmtTime(secsLeft);
+  const ok  = document.getElementById('s-ok').textContent;
+  const no  = document.getElementById('s-no').textContent;
+  const bl  = document.getElementById('s-bl').textContent;
+  const pt  = document.getElementById('s-pt').textContent;
+
+  let cheatLine = cheatCount > 0
+    ? '⚠️ GIAN LẬN: ' + cheatCount + ' lần vi phạm – ' + cheatLog.join(' | ')
+    : '✅ Không phát hiện vi phạm';
+
+  document.getElementById('pdfInfoContent').innerHTML =
+    '<br>📄 Đề: Luyện Tập Số 12 – Chuyên Anh Phú Thọ 2026-2027' +
+    '<br>📅 Ngày làm: ' + now.toLocaleDateString('vi-VN') + ' lúc ' + now.toLocaleTimeString('vi-VN') +
+    '<br>🔁 Lần làm bài: Lần thứ ' + attemptCount +
+    '<br>⏱ Thời gian sử dụng: ~' + usedMin + ' phút | Còn lại khi nộp: ' + remaining +
+    '<br>📊 Kết quả: ' + ok + ' đúng / ' + no + ' sai / ' + bl + ' bỏ = <strong>' + pt + '</strong>' +
+    '<br>' + cheatLine;
+
+  document.getElementById('pdfInfo').style.display='block';
+  setTimeout(()=>{ window.print(); }, 300);
+}
+
+// ─── WORD COUNT ───────────────────────────────────────────────────────────────
+function updateWC(){
+  const t=document.getElementById('essay').value.trim();
+  const n=t===''?0:t.split(/\s+/).length;
+  const el=document.getElementById('wc');
+  el.textContent=n;
+  el.style.color=n<140?'var(--bl)':n<=160?'var(--ok)':'var(--no)';
+}
+</script>
+</body>
+</html>
